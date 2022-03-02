@@ -1,0 +1,50 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Anticipatory Power Flow
+author: ""
+copyright: "2022 - present, Christian Cahig"
+
+execute:
+  execute_notebooks: force
+
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    # - deflist
+    - dollarmath
+    # - html_admonition
+    # - html_image
+    - linkify
+    # - replacements
+    # - smartquotes
+    - substitution
+    - tasklist
+  myst_url_schemes: [mailto, http, https]
+  myst_dmath_double_inline: true
+
+latex:
+  latex_engine: pdflatex
+  use_jupyterbook_latex: true
+  latex_documents:
+    targetname: primer.tex
+
+bibtex_bibfiles:
+  - references.bib
+
+repository:
+  url: https://github.com/christian-cahig/Masterarbeit-APFbook
+  path_to_book: docs/primer
+  branch: main
+
+html:
+  use_repository_button: true
+  use_issues_button: true
+  use_multitoc_numbering: true
+  extra_navbar: <i>Last modified by Christian Cahig.</i>
+
+sphinx:
+  config:
+    html_show_copyright: true
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

@@ -1,0 +1,20 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: overview
+chapters:
+- file: nomenclature/main
+  sections:
+  - file: nomenclature/bus-types-and-scalars
+  - file: nomenclature/bus-indexing
+  - file: nomenclature/connection-matrices
+  - file: nomenclature/system-parameter-matrices
+  - file: nomenclature/state-variables-and-variants
+  - file: nomenclature/control-variables-and-load-profile
+  - file: nomenclature/net-nodal-injections
+  - file: nomenclature/nodal-residuals
+  - file: nomenclature/some-jacobians
+- file: markdown
+- file: notebooks
+- file: markdown-notebooks
