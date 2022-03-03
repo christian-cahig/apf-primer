@@ -28,21 +28,14 @@ $N$.
 In general, the suffixes `_s`, `_v`, and `_q` in variable names
 are hereby used to denote quantities pertaining to SR, PV, and PQ buses, respectively.
 
-````{margin}
-```{admonition} Branch elements
-<!-- We use the term *branch elements* as a common model for
-transmission lines, transformers, and phase shifters. -->
-See Section 3.2 of
-[the MATPOWER User's Manual version 7.1](https://matpower.org/docs/MATPOWER-manual-7.1.pdf).
-```
-````
-
-We also use the symbols
-
-* $E$ for the number of branch elements,
-* $G$ for the number of generator units,
-* $D$ for the number of load units, and
-* $\delta_{ \mathsf{ref} }$ for the voltage phase angle at the reference bus.
-
+Furthermore, we use
+$E$ to denote the number of branch elements[^about-branch-elems],
+$G$ the number of generator units,
+$D$ the number of load units, and
+$\delta_{ \mathsf{ref} }$ the voltage phase angle at the reference bus.
 Their respective variable names are
 `N_br`, `N_g`, `N_d`, and `va_ref`.
+
+[^about-branch-elems]: We use the term 'branch elements' as a common model for
+transmission lines, transformers, and phase shifters, as in Section 3.2 of
+[*MATPOWER User's Manual version 7.1*](https://matpower.org/docs/MATPOWER-manual-7.1.pdf).

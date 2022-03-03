@@ -26,24 +26,19 @@ $$
 \end{matrix} \right],
 $$
 
-with corresponding variable names `vm`, `vm_s`, `vm_v`, and `vm_q`.
-Hence, this can be expressed in MATLAB as
+This can be written in MATLAB as
 
 ```matlab
-vm_s = ...;
-vm_v = ...;
-vm_q = ...;
 vm = [vm_s; vm_v; vm_q];
 ```
 
 or in NumPy as
 
 ```python
-vm_s = ...
-vm_v = ...
-vm_q = ...
 vm = np.concatenate((vm_s, vm_v, vm_q), axis=0)
 ```
+
+where `vm` is the dedicated variable name for $\boldsymbol{v}$.
 
 (nom:bus-indexing:mats-nr-nc)=
 ## Matrices with $N$ rows and $N$ columns
@@ -101,7 +96,7 @@ Y = [[Y_s_s;  Y_v_s;  Y_q_s], ...
 or in NumPy as
 
 ```python
-Y = np.block([
+Y = numpy.block([
         [Y_s_s, Y_v_s, Y_q_s],
         [Y_s_v, Y_v_v, Y_q_v],
         [Y_s_q, Y_v_q, Y_q_q],
@@ -145,7 +140,7 @@ Cg = [Cg_s; Cg_v; Cg_q];
 and in NumPy as
 
 ```python
-Cg = np.block([[Cg_s], [Cg_v], [Cg_q]])
+Cg = numpy.block([[Cg_s], [Cg_v], [Cg_q]])
 # or, using `vstack()`,
 Cg = np.vstack((Cg_s, Cg_v, Cg_q))
 ```
@@ -186,7 +181,7 @@ Cf = [Cf_s, Cf_v, Cf_q]
 and in NumPy as
 
 ```python
-Cf = np.block([Cf_s, Cf_v, Cf_q])
+Cf = numpy.block([Cf_s, Cf_v, Cf_q])
 # or, using `hstack()`,
 Cf = np.hstack((Cf_s, Cf_v, Cf_q))
 ```
