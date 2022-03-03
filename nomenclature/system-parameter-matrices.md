@@ -30,4 +30,105 @@ Section 4 of
 (nom:syst-param-mats:E-Z)=
 ## Conductance-susceptance matrices
 
-*Lorem ipsum*
+Let
+$\boldsymbol{G}_{ \mathsf{0} }$
+and
+$\boldsymbol{B}_{ \mathsf{0} }$
+be equal to
+$\boldsymbol{G}$
+and to
+$\boldsymbol{B}$,
+respectively, but with zero diagonals.
+Define
+$\boldsymbol{A}_{ \mathsf{d} } = \boldsymbol{C}_{ \mathsf{f} }^{ \mathsf{T} } - \boldsymbol{C}_{ \mathsf{t} }^{ \mathsf{T} }$
+and
+$\boldsymbol{A}_{ \mathsf{u} } = \boldsymbol{C}_{ \mathsf{f} }^{ \mathsf{T} } + \boldsymbol{C}_{ \mathsf{t} }^{ \mathsf{T} }$.
+Let
+$\odot$
+denote elementwise matrix multiplication,
+$\operatorname{diag} \! \left( \boldsymbol{m} \right)$
+denote a diagonal $M \times M$ matrix whose elements are given by some $M$-vector $\boldsymbol{m}$,
+and
+$\operatorname{diags} \! \left( \boldsymbol{M} \right)$
+denote an $M$-vector comprised of the main-diagonal elements of some $M \times M$ matrix $\boldsymbol{M}$.
+
+The *full conductance-susceptance matrix*
+$\boldsymbol{E}$
+is obtained by first setting it to be
+
+$$
+\boldsymbol{E}
+\, \gets
+\left[ \begin{matrix}
+    \operatorname{diag} \! \left( \operatorname{diags} \! \left( \boldsymbol{G} \right) \right)
+    &
+    \boldsymbol{A}_{ \mathsf{u} } \odot \boldsymbol{G}_{\mathsf{0}} \boldsymbol{A}_{ \mathsf{u} }
+    &
+    \boldsymbol{A}_{ \mathsf{d} } \odot \boldsymbol{B}_{\mathsf{0}} \boldsymbol{A}_{ \mathsf{u} }
+    \, \\
+    -\operatorname{diag} \! \left( \operatorname{diags} \! \left( \boldsymbol{B} \right) \right)
+    &
+    -\boldsymbol{A}_{ \mathsf{u} } \odot \boldsymbol{B}_{\mathsf{0}} \boldsymbol{A}_{ \mathsf{u} }
+    &
+    \boldsymbol{A}_{ \mathsf{d} } \odot \boldsymbol{G}_{\mathsf{0}} \boldsymbol{A}_{ \mathsf{u} }
+    \, \\
+\end{matrix} \right]
+\in \mathbb{R}^{ 2N \times \left( N + 2E \right) }
+$$
+
+and then permuting the right most $2E$ columns by "interweaving"
+the $\left( N + 1 \right)$-th through the $\left( N + E \right)$-th columns
+and
+the $\left( N + E + 1 \right)$-th through the $\left( N + 2E \right)$-th:
+
+$$
+\boldsymbol{E}
+\, \gets
+\left[ \begin{matrix}
+    \boldsymbol{E}_{ : ,\, 1:N }
+    &
+    \boldsymbol{E}_{ : ,\, N + 1 }
+    &
+    \boldsymbol{E}_{ : ,\, N + E + 1 }
+    &
+    \boldsymbol{E}_{ : ,\, N + 2 }
+    &
+    \boldsymbol{E}_{ : ,\, N + E + 2 }
+    &
+    \cdots
+    &
+    \boldsymbol{E}_{ : ,\, N + E }
+    &
+    \boldsymbol{E}_{ : ,\, N + 2E }
+    \, \\
+\end{matrix} \right]
+$$
+
+Formally,
+$\boldsymbol{E}$
+is the coefficient of the linear dependence of
+{ref}`the full net nodal injection vector <nom:net-nodal-injs:e-z>`
+$\boldsymbol{e}$
+on
+{ref}`the canonicalized state vector <nom:state-vars:y-u>`
+$\boldsymbol{y}$,
+*i.e.*,
+$\boldsymbol{e} = \boldsymbol{E} \boldsymbol{y}$.
+This is essentially the power balance equation[^about-E],
+and is the first component of
+{ref}`the factored formulation of the power flow equations <nom:nodal-residuals:pfe>`.
+Similarly,
+$\boldsymbol{Z}$
+is the coefficient of the linear dependence of
+{ref}`the reduced net nodal injection vector <nom:net-nodal-injs:e-z>`
+$\boldsymbol{z}$
+on
+$\boldsymbol{y}$,
+*i.e.*,
+$\boldsymbol{z} = \boldsymbol{Z} \boldsymbol{y}$.
+We reserve the variable names `E` and `Z` for $\boldsymbol{E}$ and for $\boldsymbol{Z}$, respectively.
+
+[^about-E]: As a hint, start with the bus injection model
+(*e.g.*, see Section 5.1 of
+[*An introduction to optimal power flow: Theory, formulation, and examples*](https://doi.org/10.1080/0740817X.2016.1189626)),
+and try to transform the explicit summations into a matrix-vector expression.
