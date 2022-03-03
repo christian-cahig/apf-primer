@@ -1,4 +1,4 @@
 (nom:some-jacobians)=
 # Some Jacobians
 
-*Lorem ipsum*
+*Under construction*

@@ -1,7 +1,7 @@
 (apf-proc:main)=
 # The APF Procedure
 
-*Lorem ipsum*
+*Under construction*
 
 ```{tableofcontents}
 ```

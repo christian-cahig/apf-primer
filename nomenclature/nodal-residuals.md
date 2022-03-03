@@ -1,9 +1,9 @@
 (nom:nodal-residuals)=
 # Nodal residuals
 
-*Lorem ipsum*
+*Under construction*
 
 (nom:nodal-residuals:pfe)=
 ## Power flow equations
 
-*Lorem ipsum*
+*Under construction*

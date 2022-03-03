@@ -1,24 +1,24 @@
 (nom:net-nodal-injs)=
 # Net nodal injections
 
-*Lorem ipsum*
+*Under construction*
 
 (nom:net-nodal-injs:e-z)=
 ## Net nodal injection vectors
 
-*Lorem ipsum*
+*Under construction*
 
 (nom:net-nodal-injs:ez-from-cd)=
 ## Calculating from the control variables and the load profile
 
-*Lorem ipsum*
+*Under construction*
 
 (nom:net-nodal-injs:ez-from-s)=
 ## Calculating from the system state variables
 
-*Lorem ipsum*
+*Under construction*
 
 (nom:net-nodal-injs:ez-from-y)=
 ## Calculating from the canonicalized state vector
 
-*Lorem ipsum*
+*Under construction*
