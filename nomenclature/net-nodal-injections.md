@@ -34,6 +34,11 @@ $$
 \boldsymbol{z}
 =
 \left[ \begin{matrix}
+    \boldsymbol{e}_{ N_\mathsf{s} \, +\, 1 \, : \, N }      \, \\
+    \boldsymbol{e}_{ N + N_\mathsf{s} \, +\, 1 \, : }       \, \\
+\end{matrix} \right]
+=
+\left[ \begin{matrix}
     \boldsymbol{p}_{ \mathsf{v} }     \, \\
     \boldsymbol{p}_{ \mathsf{q} }     \, \\
     \boldsymbol{q}_{ \mathsf{v} }     \, \\
@@ -47,7 +52,7 @@ following {ref}`the partitioning scheme <nom:bus-indexing:vecs-n>` for $N$-vecto
 We reserve the variable names `e` and `z` for $\boldsymbol{e}$ and for $\boldsymbol{z}$, respectively.
 
 (nom:net-nodal-injs:ez-from-cd)=
-## Calculating from the control variables and the load profile
+## Calculating $\boldsymbol{e}$ from $\boldsymbol{c}$ and $\boldsymbol{d}$
 
 We can compute the net power injections at the buses directly
 as the algebraic sum of the generator-induced injections and the load-induced draws at the buses, *i.e.*,
@@ -70,10 +75,10 @@ j
 \, ,
 $$
 
-or, in terms of $\boldsymbol{e}$, $\boldsymbol{c}$, and $\boldsymbol{d}$,
+or, in terms of $\boldsymbol{c}$, and $\boldsymbol{d}$,
 
 $$
-\boldsymbol{e}
+\boldsymbol{e} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)
 =
 \boldsymbol{c}^{\prime} - \boldsymbol{d}^{\prime}
 =
@@ -104,7 +109,7 @@ $$
 $$
 
 (nom:net-nodal-injs:ez-from-s)=
-## Calculating from the system state variables
+## Calculating $\boldsymbol{e}$ from $\boldsymbol{v}$ and $\boldsymbol{\delta}$
 
 The net nodal injections can also be computed from the system state variables through the system bus admittance matrix,
 *i.e.*,
@@ -166,23 +171,60 @@ with
 $\boldsymbol{v}_{ \mathsf{r} } = \operatorname{ diag } \! \left( \boldsymbol{v} \right) \cos \! \left( \boldsymbol{\delta} \right)$
 and
 $\boldsymbol{v}_{ \mathsf{i} } = \operatorname{ diag } \! \left( \boldsymbol{v} \right) \sin \! \left( \boldsymbol{\delta} \right)$.
+Hence, we have
+
+$$
+\boldsymbol{e} \! \left( \boldsymbol{v}, \boldsymbol{\delta} \right)
+=
+\left[ \begin{matrix}
+    \operatorname{ diag } \! \left( \boldsymbol{v}_{ \mathsf{r} } \right)
+    \left(
+        \boldsymbol{G} \boldsymbol{v}_{ \mathsf{r} }
+        -
+        \boldsymbol{B} \boldsymbol{v}_{ \mathsf{i} }
+    \right)
+    -
+    \operatorname{ diag } \! \left( \boldsymbol{v}_{ \mathsf{i} } \right)
+    \left(
+        \boldsymbol{B} \boldsymbol{v}_{ \mathsf{r} }
+        +
+        \boldsymbol{G} \boldsymbol{v}_{ \mathsf{i} }
+    \right)
+    \\
+    \operatorname{ diag } \! \left( \boldsymbol{v}_{ \mathsf{i} } \right)
+    \left(
+        \boldsymbol{G} \boldsymbol{v}_{ \mathsf{r} }
+        -
+        \boldsymbol{B} \boldsymbol{v}_{ \mathsf{i} }
+    \right)
+    -
+    \operatorname{ diag } \! \left( \boldsymbol{v}_{ \mathsf{r} } \right)
+    \left(
+        \boldsymbol{B} \boldsymbol{v}_{ \mathsf{r} }
+        +
+        \boldsymbol{G} \boldsymbol{v}_{ \mathsf{i} }
+    \right)
+    \\
+\end{matrix} \right]
+\, .
+$$
 
 (nom:net-nodal-injs:ez-from-y)=
-## Calculating from the canonicalized state vector
+## Calculating $\boldsymbol{e}$ from $\boldsymbol{y}$
 
 With judicious algebraic manipulation,
-we can express $\boldsymbol{e}$ as a linear function of $\boldsymbol{y}$[^about-E],
+the net nodal injections are a linear function of $\boldsymbol{y}$[^about-E],
 *i.e.*,
 
 $$
-\boldsymbol{e} = \boldsymbol{E} \boldsymbol{y} \, .
+\boldsymbol{e} \! \left( \boldsymbol{y} \right) = \boldsymbol{E} \boldsymbol{y} \, .
 $$
 
 Neglecting the slack-nodal injections,
 we can express $\boldsymbol{z}$ as a linear function of $\boldsymbol{y}$, too:
 
 $$
-\boldsymbol{z} = \boldsymbol{Z} \boldsymbol{y} \, .
+\boldsymbol{z} \! \left( \boldsymbol{y} \right) = \boldsymbol{Z} \boldsymbol{y} \, .
 $$
 
 [^about-E]: As a hint, start with the bus injection model
