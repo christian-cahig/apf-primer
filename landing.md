@@ -9,7 +9,7 @@ elementary power systems analysis and steady-state modelling.
 To cite this document, please use
 
 ```bibtex
-@Online{KVoit,
+@Online{CCahigAPFPrimer,
   author = {Christian {Cahig}},
   title  = {A Primer on Anticipatory Power Flow},
   url    = {https://christian-cahig.github.io/apf-primer/},
