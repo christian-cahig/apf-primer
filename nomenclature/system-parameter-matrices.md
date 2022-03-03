@@ -52,9 +52,7 @@ and
 $\operatorname{diags} \! \left( \boldsymbol{M} \right)$
 denote an $M$-vector comprised of the main-diagonal elements of some $M \times M$ matrix $\boldsymbol{M}$.
 
-The *full conductance-susceptance matrix*
-$\boldsymbol{E}$
-is obtained by first setting it to be
+The *full conductance-susceptance matrix* $\boldsymbol{E}$ is obtained by first setting it to be
 
 $$
 \boldsymbol{E}
@@ -74,6 +72,7 @@ $$
     \, \\
 \end{matrix} \right]
 \in \mathbb{R}^{ 2N \times \left( N + 2E \right) }
+\, ,
 $$
 
 and then permuting the right most $2E$ columns by "interweaving"
@@ -102,7 +101,13 @@ $$
     \boldsymbol{E}_{ : ,\, N + 2E }
     \, \\
 \end{matrix} \right]
+\, .
 $$
+
+The *reduced conductance-susceptance matrix* $\boldsymbol{Z}$ is a submatrix of $\boldsymbol{E}$
+formed by dropping the topmost $N_{ \mathsf{s} }$ the
+$\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s}  \right)$-th
+rows[^about-Z]
 
 Formally,
 $\boldsymbol{E}$
@@ -126,3 +131,6 @@ $\boldsymbol{y}$,
 *i.e.*,
 $\boldsymbol{z} = \boldsymbol{Z} \boldsymbol{y}$.
 We reserve the variable names `E` and `Z` for $\boldsymbol{E}$ and for $\boldsymbol{Z}$, respectively.
+
+[^about-Z]: This corresponds to dropping the slack nodal injections.
+See {ref}`nom:net-nodal-injs:ez-from-y`.
