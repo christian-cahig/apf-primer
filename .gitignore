@@ -1,2 +1,5 @@
 **/*.bib.sav.tmp
 _build/
+
+nomenclature.ipynb
+anticipatory_power_flow.ipynb
