@@ -1,8 +1,6 @@
 (nom:state-vars)=
 # State variables and variants
 
-*Lorem ipsum*
-
 (nom:state-vars:vm-va)=
 ## System state variables
 
