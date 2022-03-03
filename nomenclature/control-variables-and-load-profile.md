@@ -96,7 +96,7 @@ $$
 \, .
 $$
 
-Similarly, the {ref}`generator connection matrix <nom:connection-mats:Cg>`
+Similarly, the {ref}`load connection matrix <nom:connection-mats:Cd>`
 the contributions of the load units to the power injections at the buses are computed as
 $\boldsymbol{C}_{ \mathsf{d} } \left( \boldsymbol{p}_{ \mathsf{d} } + j \boldsymbol{p}_{ \mathsf{d} } \right) $.
 In terms of $\boldsymbol{d}$,

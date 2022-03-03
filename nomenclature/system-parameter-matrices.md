@@ -105,9 +105,20 @@ $$
 $$
 
 The *reduced conductance-susceptance matrix* $\boldsymbol{Z}$ is a submatrix of $\boldsymbol{E}$
-formed by dropping the topmost $N_{ \mathsf{s} }$ the
-$\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s}  \right)$-th
-rows[^about-Z]
+formed by dropping the topmost $N_{ \mathsf{s} }$ and the
+$\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
+rows of $\boldsymbol{E}$[^about-Z], *i.e.*,
+
+$$
+\boldsymbol{Z}
+=
+\left[ \begin{matrix}
+    \boldsymbol{E}_{ N_{ \mathsf{s} } + 1 \, : \, N ,\, : }   \, \\
+    \boldsymbol{E}_{ N + N_{ \mathsf{s} } + 1 \, : ,\, : }   \, \\
+\end{matrix} \right]
+\in \mathbb{R}^{ \left( 2N - 2N_{ \mathsf{s} } \right) \times \left( N + 2E \right) }
+\, .
+$$
 
 Formally,
 $\boldsymbol{E}$
@@ -120,7 +131,7 @@ $\boldsymbol{y}$,
 *i.e.*,
 $\boldsymbol{e} = \boldsymbol{E} \boldsymbol{y}$.
 This linear relation is the first component of
-{ref}`the factored formulation of the power flow equations <nom:nodal-residuals:pfe>`.
+{ref}`the factored formulation of the power flow equations <nom:pow-flow-eqns>`.
 Similarly,
 $\boldsymbol{Z}$
 is the coefficient of the linear dependence of

@@ -14,7 +14,7 @@ chapters:
   - file: nomenclature/state-variables-and-variants
   - file: nomenclature/control-variables-and-load-profile
   - file: nomenclature/net-nodal-injections
-  - file: nomenclature/nodal-residuals
+  - file: nomenclature/power-flow-equations
   - file: nomenclature/some-jacobians
 - file: problem-data/main
   sections:
