@@ -114,8 +114,7 @@ on
 $\boldsymbol{y}$,
 *i.e.*,
 $\boldsymbol{e} = \boldsymbol{E} \boldsymbol{y}$.
-This is essentially the power balance equation[^about-E],
-and is the first component of
+This linear relation is the first component of
 {ref}`the factored formulation of the power flow equations <nom:nodal-residuals:pfe>`.
 Similarly,
 $\boldsymbol{Z}$
@@ -127,8 +126,3 @@ $\boldsymbol{y}$,
 *i.e.*,
 $\boldsymbol{z} = \boldsymbol{Z} \boldsymbol{y}$.
 We reserve the variable names `E` and `Z` for $\boldsymbol{E}$ and for $\boldsymbol{Z}$, respectively.
-
-[^about-E]: As a hint, start with the bus injection model
-(*e.g.*, see Section 5.1 of
-[*An introduction to optimal power flow: Theory, formulation, and examples*](https://doi.org/10.1080/0740817X.2016.1189626)),
-and try to transform the explicit summations into a matrix-vector expression.
