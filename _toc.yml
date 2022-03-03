@@ -20,6 +20,11 @@ chapters:
   sections:
   - file: problem-data/snapshot-data
   - file: problem-data/dispatch-data
+- file: apf-procedure/main
+  sections:
+  - file: apf-procedure/anticipate-injs
+  - file: apf-procedure/solve-bus-voltages
+  - file: apf-procedure/refine-slack-injs
 # - file: markdown
 # - file: notebooks
 # - file: markdown-notebooks
