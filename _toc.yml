@@ -16,6 +16,10 @@ chapters:
   - file: nomenclature/net-nodal-injections
   - file: nomenclature/nodal-residuals
   - file: nomenclature/some-jacobians
+- file: problem-data/main
+  sections:
+  - file: problem-data/snapshot-data
+  - file: problem-data/dispatch-data
 # - file: markdown
 # - file: notebooks
 # - file: markdown-notebooks
