@@ -175,15 +175,14 @@ we can express $\boldsymbol{e}$ as a linear function of $\boldsymbol{y}$[^about-
 *i.e.*,
 
 $$
-\boldsymbol{e} & = \boldsymbol{E} \boldsymbol{y} \, .
+\boldsymbol{e} = \boldsymbol{E} \boldsymbol{y} \, .
 $$
 
 Neglecting the slack-nodal injections,
-we can express $\boldsymbol{z}$ as a linear function of $\boldsymbol{y}$ as well,
-*i.e.*,
+we can express $\boldsymbol{z}$ as a linear function of $\boldsymbol{y}$, too:
 
 $$
-\boldsymbol{z} & = \boldsymbol{Z} \boldsymbol{y} \, .
+\boldsymbol{z} = \boldsymbol{Z} \boldsymbol{y} \, .
 $$
 
 [^about-E]: As a hint, start with the bus injection model
