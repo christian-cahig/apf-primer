@@ -2,8 +2,9 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: overview
+root: landing
 chapters:
+- file: overview
 - file: nomenclature/main
   sections:
   - file: nomenclature/bus-types-and-scalars
@@ -15,6 +16,6 @@ chapters:
   - file: nomenclature/net-nodal-injections
   - file: nomenclature/nodal-residuals
   - file: nomenclature/some-jacobians
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+# - file: markdown
+# - file: notebooks
+# - file: markdown-notebooks

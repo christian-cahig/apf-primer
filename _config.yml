@@ -4,6 +4,7 @@
 title: Anticipatory Power Flow
 author: ""
 copyright: "2022 - present, Christian Cahig"
+only_build_toc_files: true
 
 execute:
   execute_notebooks: force
@@ -34,15 +35,16 @@ bibtex_bibfiles:
   - references.bib
 
 repository:
-  url: https://github.com/christian-cahig/Masterarbeit-APF
-  path_to_book: docs/primer
+  url: https://github.com/christian-cahig/apf-primer
   branch: main
 
 html:
   use_repository_button: true
   use_issues_button: true
   use_multitoc_numbering: true
-  extra_navbar: <i>Last modified by Christian Cahig.</i>
+  home_page_in_navbar: false
+  extra_navbar: <i>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></i>
+  extra_footer: This document is licensed under the Creative Commons Attribution 4.0 International Public License.
 
 sphinx:
   config:
