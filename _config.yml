@@ -34,7 +34,7 @@ bibtex_bibfiles:
   - references.bib
 
 repository:
-  url: https://github.com/christian-cahig/Masterarbeit-APFbook
+  url: https://github.com/christian-cahig/Masterarbeit-APF
   path_to_book: docs/primer
   branch: main
 
