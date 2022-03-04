@@ -1,4 +1,6 @@
 (apf-prc:solve-volts)=
 # Solving for the bus voltages
 
-*Under construction*
+```{caution}
+This page is under construction
+```
