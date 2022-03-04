@@ -131,7 +131,7 @@ $\boldsymbol{y}$,
 *i.e.*,
 $\boldsymbol{e} = \boldsymbol{E} \boldsymbol{y}$.
 This linear relation is the first component of
-{ref}`the factored formulation of the power flow equations <nom:pow-flow-eqns>`.
+{ref}`the factored formulation of the power flow equations <nom:pow-flow-eqns:balance>`.
 Similarly,
 $\boldsymbol{Z}$
 is the coefficient of the linear dependence of

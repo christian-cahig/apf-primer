@@ -118,7 +118,7 @@ $\boldsymbol{x}$
 as
 $\boldsymbol{u} = \boldsymbol{C} \boldsymbol{x}$.
 This linear relation is the second component of
-{ref}`the factored formulation of the power flow equations <nom:pow-flow-eqns>`.
+{ref}`the factored formulation of the power flow equations <nom:pow-flow-eqns:balance>`.
 
 [^about-C]: This is based on Equation (45) of
 [*Bilinear Power System State Estimation*](https://doi.org/10.1109/TPWRS.2011.2162256).

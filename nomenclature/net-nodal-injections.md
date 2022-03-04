@@ -110,7 +110,7 @@ $$
 
 To get $\boldsymbol{z} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$,
 simply drop the first $N_{ \mathsf{s} }$
-and the $N$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
+and the $\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
 elements of $\boldsymbol{e} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$.
 
 (nom:net-nodal-injs:ez-from-s)=
@@ -216,7 +216,7 @@ $$
 
 To get $\boldsymbol{z} \! \left( \boldsymbol{v}, \boldsymbol{\delta} \right)$,
 simply drop the first $N_{ \mathsf{s} }$
-and the $N$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
+and the $\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
 elements of $\boldsymbol{e} \! \left( \boldsymbol{v}, \boldsymbol{\delta} \right)$.
 
 (nom:net-nodal-injs:ez-from-y)=
@@ -238,7 +238,7 @@ $$
 $$
 
 which is equivalent to dropping the first $N_{ \mathsf{s} }$
-and the $N$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
+and the $\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
 elements of $\boldsymbol{e} \! \left( \boldsymbol{y} \right)$.
 
 [^about-E]: As a hint, start with the bus injection model

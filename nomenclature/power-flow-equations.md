@@ -1,12 +1,16 @@
 (nom:pow-flow-eqns)=
 # Power flow equations
 
+(nom:pow-flow-eqns:balance)=
+## Nodal power balance
+
 The *power flow equations* embody the nodal power balance requirements[^about-bim],
 that is,
 the value of the net nodal injections calculated from the system state variables,
 $\boldsymbol{e} \! \left( \boldsymbol{s} \right)$,
 must match that from the control variables and the load profile,
-$\boldsymbol{e} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$ :
+$\boldsymbol{e} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$,
+*i.e.*,
 
 $$
 \left[ \begin{matrix}
@@ -39,7 +43,7 @@ $$
     \right)
     \\
 \end{matrix} \right]
-& =
+=
 \left[ \begin{matrix}
     \boldsymbol{C}_{ \mathsf{g} } \, \boldsymbol{p}_{ \mathsf{g} }
     -
@@ -50,6 +54,10 @@ $$
     \boldsymbol{C}_{ \mathsf{d} } \, \boldsymbol{q}_{ \mathsf{d} }
     \\[1em]
 \end{matrix} \right]
+= \,
+\boldsymbol{C}_{ \mathsf{G} } \, \boldsymbol{c}
+-
+\boldsymbol{C}_{ \mathsf{D} } \, \boldsymbol{d}
 $$
 
 In the *factored formulation* of the power flow equations,
@@ -70,6 +78,13 @@ $$
 \, .
 $$
 
+```{note}
+The requirement
+$\boldsymbol{E} \boldsymbol{y} = \boldsymbol{C}_{ \mathsf{G} } \, \boldsymbol{c} - \boldsymbol{C}_{ \mathsf{D} } \, \boldsymbol{d}$
+subsumes
+$\boldsymbol{z} \! \left( \boldsymbol{y} \right) \triangleq \boldsymbol{Z} \boldsymbol{y} = \boldsymbol{z} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$.
+```
+
 [^about-bim]: Strictly speaking, this is the "bus injection model" of the power flow equations.
 Another prominent (equivalent) formulation is the "branch flow model"
 (see Section 5.2 of
@@ -77,6 +92,9 @@ Another prominent (equivalent) formulation is the "branch flow model"
 
 [^about-fac-pfe]: The idea is based on Equations (27) and (28) of
 [*Factorized Load Flow*](https://doi.org/10.1109/TPWRS.2013.2265298).
+
+(nom:pow-flow-eqns:residuals)=
+## Nodal power residuals
 
 The *nodal power residuals* are the 'mismatches' between
 $\boldsymbol{e} \! \left( \boldsymbol{y} \right)$
@@ -195,3 +213,13 @@ $$
 \in \mathbb{R}^{ 2N - 2N_{ \mathsf{s} } }
 \, .
 $$
+
+In other words, one can get
+$\boldsymbol{\psi} \! \left( \boldsymbol{y}, \boldsymbol{c}, \boldsymbol{d} \right)$
+by removing the first $N_{ \mathsf{s} }$
+and the $\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s} } \right)$-th elements of
+$\boldsymbol{\phi} \! \left( \boldsymbol{y}, \boldsymbol{c}, \boldsymbol{d} \right)$.
+The same procedure applies for getting
+$\boldsymbol{\psi} \! \left( \boldsymbol{s}, \boldsymbol{c}, \boldsymbol{d} \right)$
+from
+$\boldsymbol{\phi} \! \left( \boldsymbol{s}, \boldsymbol{c}, \boldsymbol{d} \right)$.
