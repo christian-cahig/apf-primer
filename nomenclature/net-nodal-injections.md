@@ -108,6 +108,11 @@ $$
 \, .
 $$
 
+To get $\boldsymbol{z} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$,
+simply drop the first $N_{ \mathsf{s} }$
+and the $N$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
+elements of $\boldsymbol{e} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$.
+
 (nom:net-nodal-injs:ez-from-s)=
 ## Calculating $\boldsymbol{e}$ from $\boldsymbol{v}$ and $\boldsymbol{\delta}$
 
@@ -209,6 +214,11 @@ $$
 \, .
 $$
 
+To get $\boldsymbol{z} \! \left( \boldsymbol{v}, \boldsymbol{\delta} \right)$,
+simply drop the first $N_{ \mathsf{s} }$
+and the $N$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
+elements of $\boldsymbol{e} \! \left( \boldsymbol{v}, \boldsymbol{\delta} \right)$.
+
 (nom:net-nodal-injs:ez-from-y)=
 ## Calculating $\boldsymbol{e}$ from $\boldsymbol{y}$
 
@@ -224,8 +234,12 @@ Neglecting the slack-nodal injections,
 we can express $\boldsymbol{z}$ as a linear function of $\boldsymbol{y}$, too:
 
 $$
-\boldsymbol{z} \! \left( \boldsymbol{y} \right) = \boldsymbol{Z} \boldsymbol{y} \, .
+\boldsymbol{z} \! \left( \boldsymbol{y} \right) = \boldsymbol{Z} \boldsymbol{y} \, ,
 $$
+
+which is equivalent to dropping the first $N_{ \mathsf{s} }$
+and the $N$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
+elements of $\boldsymbol{e} \! \left( \boldsymbol{y} \right)$.
 
 [^about-E]: As a hint, start with the bus injection model
 (*e.g.*, see Section 5.1 of
