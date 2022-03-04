@@ -16,10 +16,11 @@ chapters:
   - file: nomenclature/net-nodal-injections
   - file: nomenclature/power-flow-equations
   - file: nomenclature/some-jacobians
-- file: problem-data/main
-  sections:
-  - file: problem-data/snapshot-data
-  - file: problem-data/dispatch-data
+  - file: nomenclature/problem-data
+# - file: problem-data/main
+#   sections:
+#   - file: problem-data/snapshot-data
+#   - file: problem-data/dispatch-data
 - file: apf-procedure/main
   sections:
   - file: apf-procedure/anticipate-injs

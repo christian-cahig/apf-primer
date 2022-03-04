@@ -1,7 +1,7 @@
 (nom:main)=
 # Nomenclature
 
-This chapter discusses some terminologies and conventions in notation and in code.
+This chapter presents the terminologies and notational conventions.
 
 ```{tableofcontents}
 ```
