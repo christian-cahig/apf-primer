@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: "Anticipatory Power Flow"
+title: Anticipatory Power Flow
 author: ""
 copyright: "2022 - present, Christian Cahig"
 only_build_toc_files: true
