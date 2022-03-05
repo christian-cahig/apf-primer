@@ -34,11 +34,8 @@ There are two highlights in this work.
 First, we describe methods for estimating the anticipated generator injections using the snapshot and dispatch data.
 Second, we present a method for solving the bus voltages through a slightly modified version of the *factored Newton-Raphson* method.
 
-This is the accompanying primer to the repository
+This website is the accompanying primer to the repository
 [github.com/christian-cahig/Masterarbeit-APF](https://github.com/christian-cahig/Masterarbeit-APF).
-To keep the contents concise,
-we assume that the reader is acquainted with
-elementary power systems analysis and steady-state modelling.
 
 ## Contents
 
