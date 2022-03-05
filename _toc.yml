@@ -4,7 +4,7 @@
 format: jb-book
 root: landing
 chapters:
-- file: overview
+# - file: overview
 - file: nomenclature/main
   sections:
   - file: nomenclature/bus-types-and-scalars
@@ -17,15 +17,12 @@ chapters:
   - file: nomenclature/power-flow-equations
   - file: nomenclature/some-jacobians
   - file: nomenclature/problem-data
-# - file: problem-data/main
-#   sections:
-#   - file: problem-data/snapshot-data
-#   - file: problem-data/dispatch-data
 - file: apf-procedure/main
   sections:
   - file: apf-procedure/anticipate-injs
   - file: apf-procedure/solve-bus-voltages
   - file: apf-procedure/refine-slack-injs
+- file: remarks/main
 # - file: markdown
 # - file: notebooks
 # - file: markdown-notebooks
