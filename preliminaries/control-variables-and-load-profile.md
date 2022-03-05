@@ -1,7 +1,7 @@
-(nom:control-vars-and-load-profile)=
+(prelim:control-vars-and-load-profile)=
 # Control variables and load profile
 
-(nom:control-vars-and-load-profile:unit-level)=
+(prelim:control-vars-and-load-profile:unit-level)=
 ## Unit-level injections and draws
 
 *Control variables* collectively refers to two $G$-vectors:
@@ -62,10 +62,10 @@ $\boldsymbol{d}$
 or the tuple
 $\left( \boldsymbol{p}_{ \mathsf{d} }, \boldsymbol{q}_{ \mathsf{d} } \right)$.
 
-(nom:control-vars-and-load-profile:bus-level)=
+(prelim:control-vars-and-load-profile:bus-level)=
 ## Bus-level contributions
 
-Through the {ref}`generator connection matrix <nom:connection-mats:Cg>`,
+Through the {ref}`generator connection matrix <prelim:connection-mats:Cg>`,
 the aggregate injections at the buses due to the generator units are computed as
 $\boldsymbol{C}_{ \mathsf{g} } \left( \boldsymbol{p}_{ \mathsf{g} } + j \boldsymbol{p}_{ \mathsf{g} } \right) $.
 In terms of $\boldsymbol{c}$,
@@ -96,7 +96,7 @@ $$
 \, .
 $$
 
-Similarly, the {ref}`load connection matrix <nom:connection-mats:Cd>`
+Similarly, the {ref}`load connection matrix <prelim:connection-mats:Cd>`
 the contributions of the load units to the power injections at the buses are computed as
 $\boldsymbol{C}_{ \mathsf{d} } \left( \boldsymbol{p}_{ \mathsf{d} } + j \boldsymbol{p}_{ \mathsf{d} } \right) $.
 In terms of $\boldsymbol{d}$,

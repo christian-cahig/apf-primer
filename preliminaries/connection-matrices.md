@@ -1,7 +1,7 @@
-(nom:connection-mats)=
+(prelim:connection-mats)=
 # Connection matrices
 
-(nom:connection-mats:Cf-Ct)=
+(prelim:connection-mats:Cf-Ct)=
 ## Branch connection matrices
 
 Connectivity of branches are encoded by
@@ -25,7 +25,7 @@ respectively.
 [^about-Cf-Ct]: Aside from notation, this is the same formulation used in Section 3.2 of
 [*MATPOWER User's Manual version 7.1*](https://matpower.org/docs/MATPOWER-manual-7.1.pdf).
 
-(nom:connection-mats:Cg)=
+(prelim:connection-mats:Cg)=
 ## Generator connection matrix
 
 The *generator connection matrix*
@@ -45,7 +45,7 @@ The variable name `Cg` is reserved for $\boldsymbol{C}_{ \mathsf{g}} $.
 [^about-Cg]: Aside from notation, this is the same formulation used in Section 3.3 of
 [*MATPOWER User's Manual version 7.1*](https://matpower.org/docs/MATPOWER-manual-7.1.pdf).
 
-(nom:connection-mats:Cd)=
+(prelim:connection-mats:Cd)=
 ## Load connection matrix
 
 The *load connection matrix*
@@ -60,7 +60,7 @@ $\left[ \begin{matrix} \boldsymbol{C}_{\mathsf{d} } \\ \end{matrix} \right]_{i, 
 otherwise.
 The variable name `Cd` is reserved for $\boldsymbol{C}_{\mathsf{d} }$.
 
-(nom:connection-mats:C)=
+(prelim:connection-mats:C)=
 ## Generalized branch connection matrix
 
 The *generalized branch connection matrix* $\boldsymbol{C}$
@@ -110,15 +110,15 @@ $$
 
 We use `C` as the dedicated variable name for $\boldsymbol{C}$.
 Formally,
-{ref}`the sigma transform of the canonicalized state vector <nom:state-vars:y-u>`
+{ref}`the sigma transform of the canonicalized state vector <prelim:state-vars:y-u>`
 $\boldsymbol{u}$
 is related to
-{ref}`the intermediate state vector <nom:state-vars:x>`
+{ref}`the intermediate state vector <prelim:state-vars:x>`
 $\boldsymbol{x}$
 as
 $\boldsymbol{u} = \boldsymbol{C} \boldsymbol{x}$.
 This linear relation is the second component of
-{ref}`the factored formulation of the power flow equations <nom:pow-flow-eqns:balance>`.
+{ref}`the factored formulation of the power flow equations <prelim:pow-flow-eqns:balance>`.
 
 [^about-C]: This is based on Equation (45) of
 [*Bilinear Power System State Estimation*](https://doi.org/10.1109/TPWRS.2011.2162256).

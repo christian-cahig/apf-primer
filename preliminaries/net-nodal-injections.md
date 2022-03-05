@@ -1,4 +1,4 @@
-(nom:net-nodal-injs)=
+(prelim:net-nodal-injs)=
 # Net nodal injections
 
 The *net nodal injections* refer to two $N$-vectors:
@@ -9,7 +9,7 @@ $\boldsymbol{q}$.
 In code, we use `p` and `q` as the respective variable names for
 $\boldsymbol{p}$ and $\boldsymbol{q}$.
 
-(nom:net-nodal-injs:e-z)=
+(prelim:net-nodal-injs:e-z)=
 ## Net nodal injection vectors
 
 Concatenating $\boldsymbol{p}$ and $\boldsymbol{q}$ gives
@@ -48,10 +48,10 @@ $$
 \, ,
 $$
 
-following {ref}`the partitioning scheme <nom:bus-indexing:vecs-n>` for $N$-vectors.
+following {ref}`the partitioning scheme <prelim:bus-indexing:vecs-n>` for $N$-vectors.
 We reserve the variable names `e` and `z` for $\boldsymbol{e}$ and for $\boldsymbol{z}$, respectively.
 
-(nom:net-nodal-injs:ez-from-cd)=
+(prelim:net-nodal-injs:ez-from-cd)=
 ## Calculating $\boldsymbol{e}$ from $\boldsymbol{c}$ and $\boldsymbol{d}$
 
 We can compute the net power injections at the buses directly
@@ -113,7 +113,7 @@ simply drop the first $N_{ \mathsf{s} }$
 and the $\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
 elements of $\boldsymbol{e} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$.
 
-(nom:net-nodal-injs:ez-from-s)=
+(prelim:net-nodal-injs:ez-from-s)=
 ## Calculating $\boldsymbol{e}$ from $\boldsymbol{v}$ and $\boldsymbol{\delta}$
 
 The net nodal injections can also be computed from the system state variables through the system bus admittance matrix,
@@ -219,7 +219,7 @@ simply drop the first $N_{ \mathsf{s} }$
 and the $\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
 elements of $\boldsymbol{e} \! \left( \boldsymbol{v}, \boldsymbol{\delta} \right)$.
 
-(nom:net-nodal-injs:ez-from-y)=
+(prelim:net-nodal-injs:ez-from-y)=
 ## Calculating $\boldsymbol{e}$ from $\boldsymbol{y}$
 
 With judicious algebraic manipulation,

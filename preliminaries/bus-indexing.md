@@ -1,4 +1,4 @@
-(nom:bus-indexing)=
+(prelim:bus-indexing)=
 # Bus indexing
 
 We assume that there is a consistent roster of buses.
@@ -10,11 +10,11 @@ and
 the last $N_{ \mathsf{q} }$ to the PQ buses.
 The following examples illustrate this.
 
-(nom:bus-indexing:vecs-n)=
+(prelim:bus-indexing:vecs-n)=
 ## Vectors of length $N$
 
 The  $N$-vector of nodal voltage magnitudes
-(see {ref}`nom:state-vars:vm-va`)
+(see {ref}`prelim:state-vars:vm-va`)
 is partitioned as
 
 $$
@@ -40,11 +40,11 @@ vm = np.concatenate((vm_s, vm_v, vm_q), axis=0)
 
 where `vm` is the dedicated variable name for $\boldsymbol{v}$.
 
-(nom:bus-indexing:mats-nr-nc)=
+(prelim:bus-indexing:mats-nr-nc)=
 ## Matrices with $N$ rows and $N$ columns
 
 The $N \times N$ system bus admittance matrix $\mathbf{Y}$
-(see {ref}`nom:syst-param-mats:Y`)
+(see {ref}`prelim:syst-param-mats:Y`)
 is partitioned as
 
 $$
@@ -105,11 +105,11 @@ Y = numpy.block([
 
 where `Y` is the dedicated variable name for $\mathbf{Y}$.
 
-(nom:bus-indexing:mats-nr)=
+(prelim:bus-indexing:mats-nr)=
 ## Matrices with $N$ rows
 
 The $N \times G$ generator connection matrix $\boldsymbol{C}_{ \mathsf{g} }$
-(see {ref}`nom:connection-mats:Cg`)
+(see {ref}`prelim:connection-mats:Cg`)
 is partitioned as
 
 $$
@@ -147,11 +147,11 @@ Cg = np.vstack((Cg_s, Cg_v, Cg_q))
 
 where `Cg` is the reserved variable name for $\boldsymbol{C}_{ \mathsf{g} }$.
 
-(nom:bus-indexing:mats-nc)=
+(prelim:bus-indexing:mats-nc)=
 ## Matrices with $N$ columns
 
 The $E \times N$ from-side branch connection matrix $\boldsymbol{C}_{ \mathsf{f} }$
-(see {ref}`nom:connection-mats:Cf-Ct`)
+(see {ref}`prelim:connection-mats:Cf-Ct`)
 is partitioned as
 
 $$
