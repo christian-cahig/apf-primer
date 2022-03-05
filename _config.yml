@@ -44,7 +44,7 @@ html:
   use_multitoc_numbering: true
   home_page_in_navbar: false
   extra_navbar: <i>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></i>
-  extra_footer: This document is licensed under the Creative Commons Attribution 4.0 International Public License.
+  extra_footer: <i>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></i>.
 
 sphinx:
   config:
