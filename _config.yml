@@ -4,6 +4,7 @@
 title: Anticipatory Power Flow
 author: ""
 copyright: "2022 - present, Christian Cahig"
+description: This website presents a primer on the topic of anticipatory power flow, written by Christian Cahig.
 only_build_toc_files: true
 
 execute:
@@ -47,6 +48,7 @@ html:
   extra_footer: <i>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></i>.
 
 sphinx:
+  extra_extensions: [sphinx_multitoc_numbering]
   config:
     html_show_copyright: true
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
