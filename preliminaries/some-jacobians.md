@@ -1,4 +1,4 @@
-(nom:some-jacobians)=
+(prelim:some-jacobians)=
 # Some Jacobians
 
 As a notational convenience, we will use
@@ -17,7 +17,7 @@ is evaluated at some quantity $\boldsymbol{t}$.
 
 ## Jacobians of $\boldsymbol{\phi}$
 
-From {ref}`nom:pow-flow-eqns:residuals`,
+From {ref}`prelim:pow-flow-eqns:residuals`,
 
 $$
 \boldsymbol{\phi} \! \left( \boldsymbol{s}, \boldsymbol{c}, \boldsymbol{d} \right)
@@ -179,7 +179,7 @@ $\partial_{ \boldsymbol{y} } \boldsymbol{u} \! \left( \boldsymbol{y} \right) = \
 be the Jacobian of
 $\boldsymbol{u} = \operatorname{sigma} \! \left( \boldsymbol{y} \right)$
 w.r.t. $\boldsymbol{y}$, evaluated at some $\boldsymbol{y}$.
-{ref}`The definitions <nom:state-vars:y-u>` of $\boldsymbol{u}$ and $\boldsymbol{y}$
+{ref}`The definitions <prelim:state-vars:y-u>` of $\boldsymbol{u}$ and $\boldsymbol{y}$
 give $\partial_{ \boldsymbol{y} } \operatorname{sigma} \! \left( \boldsymbol{y} \right)$
 a very nice sparsity structure:
 it has $N$ diagonal elements corresponding to the $\boldsymbol{a}$-to-$\boldsymbol{\alpha}$ map,

@@ -5,18 +5,18 @@ format: jb-book
 root: landing
 chapters:
 # - file: overview
-- file: nomenclature/main
+- file: preliminaries/main
   sections:
-  - file: nomenclature/bus-types-and-scalars
-  - file: nomenclature/bus-indexing
-  - file: nomenclature/connection-matrices
-  - file: nomenclature/system-parameter-matrices
-  - file: nomenclature/state-variables-and-variants
-  - file: nomenclature/control-variables-and-load-profile
-  - file: nomenclature/net-nodal-injections
-  - file: nomenclature/power-flow-equations
-  - file: nomenclature/some-jacobians
-  - file: nomenclature/problem-data
+  - file: preliminaries/bus-types-and-scalars
+  - file: preliminaries/bus-indexing
+  - file: preliminaries/connection-matrices
+  - file: preliminaries/system-parameter-matrices
+  - file: preliminaries/state-variables-and-variants
+  - file: preliminaries/control-variables-and-load-profile
+  - file: preliminaries/net-nodal-injections
+  - file: preliminaries/power-flow-equations
+  - file: preliminaries/some-jacobians
+  - file: preliminaries/problem-data
 - file: apf-procedure/main
   sections:
   - file: apf-procedure/anticipate-injs

@@ -1,7 +1,7 @@
-(nom:state-vars)=
+(prelim:state-vars)=
 # State variables and variants
 
-(nom:state-vars:vm-va)=
+(prelim:state-vars:vm-va)=
 ## System state variables
 
 We use *system state variables* to collectively refer to two $N$-vectors:
@@ -34,7 +34,7 @@ $\boldsymbol{s}$
 or the tuple
 $\left( \boldsymbol{v}, \boldsymbol{\delta} \right)$.
 
-(nom:state-vars:aux)=
+(prelim:state-vars:aux)=
 ## Auxiliary state variables
 
 Let
@@ -129,7 +129,7 @@ We use `alp`, `kap`, and `rho`
 as the respective variable names for
 $\boldsymbol{\alpha}$, $\boldsymbol{\kappa}$, and $\boldsymbol{\rho}$.
 
-(nom:state-vars:x)=
+(prelim:state-vars:x)=
 ## Intermediate state vector
 
 We define *intermediate state vector* as the concatenation of
@@ -150,7 +150,7 @@ $$
 
 with `x` as the dedicated variable name.
 
-(nom:state-vars:y-u)=
+(prelim:state-vars:y-u)=
 ## Canonicalized state vector and its sigma transform
 
 The *canonicalized state vector*[^about-canon]

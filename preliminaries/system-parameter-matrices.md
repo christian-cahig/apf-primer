@@ -1,7 +1,7 @@
-(nom:syst-param-mats)=
+(prelim:syst-param-mats)=
 # System parameter matrices
 
-(nom:syst-param-mats:Y)=
+(prelim:syst-param-mats:Y)=
 ## System bus admittance matrix
 
 From elementary steady state power system modelling,
@@ -27,7 +27,7 @@ or to
 Section 4 of
 [*An introduction to optimal power flow: Theory, formulation, and examples*](https://doi.org/10.1080/0740817X.2016.1189626).
 
-(nom:syst-param-mats:E-Z)=
+(prelim:syst-param-mats:E-Z)=
 ## Conductance-susceptance matrices
 
 Let
@@ -123,19 +123,19 @@ $$
 Formally,
 $\boldsymbol{E}$
 is the coefficient of the linear dependence of
-{ref}`the full net nodal injection vector <nom:net-nodal-injs:e-z>`
+{ref}`the full net nodal injection vector <prelim:net-nodal-injs:e-z>`
 $\boldsymbol{e}$
 on
-{ref}`the canonicalized state vector <nom:state-vars:y-u>`
+{ref}`the canonicalized state vector <prelim:state-vars:y-u>`
 $\boldsymbol{y}$,
 *i.e.*,
 $\boldsymbol{e} = \boldsymbol{E} \boldsymbol{y}$.
 This linear relation is the first component of
-{ref}`the factored formulation of the power flow equations <nom:pow-flow-eqns:balance>`.
+{ref}`the factored formulation of the power flow equations <prelim:pow-flow-eqns:balance>`.
 Similarly,
 $\boldsymbol{Z}$
 is the coefficient of the linear dependence of
-{ref}`the reduced net nodal injection vector <nom:net-nodal-injs:e-z>`
+{ref}`the reduced net nodal injection vector <prelim:net-nodal-injs:e-z>`
 $\boldsymbol{z}$
 on
 $\boldsymbol{y}$,
@@ -144,4 +144,4 @@ $\boldsymbol{z} = \boldsymbol{Z} \boldsymbol{y}$.
 We reserve the variable names `E` and `Z` for $\boldsymbol{E}$ and for $\boldsymbol{Z}$, respectively.
 
 [^about-Z]: This corresponds to dropping the slack nodal injections.
-See {ref}`nom:net-nodal-injs:ez-from-y`.
+See {ref}`prelim:net-nodal-injs:ez-from-y`.

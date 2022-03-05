@@ -1,7 +1,7 @@
-(nom:pow-flow-eqns)=
+(prelim:pow-flow-eqns)=
 # Power flow equations
 
-(nom:pow-flow-eqns:balance)=
+(prelim:pow-flow-eqns:balance)=
 ## Nodal power balance
 
 The *power flow equations* embody the nodal power balance requirements[^about-bim],
@@ -93,7 +93,7 @@ Another prominent (equivalent) formulation is the "branch flow model"
 [^about-fac-pfe]: The idea is based on Equations (27) and (28) of
 [*Factorized Load Flow*](https://doi.org/10.1109/TPWRS.2013.2265298).
 
-(nom:pow-flow-eqns:residuals)=
+(prelim:pow-flow-eqns:residuals)=
 ## Nodal power residuals
 
 The *nodal power residuals* are the 'mismatches' between

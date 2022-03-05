@@ -1,4 +1,4 @@
-(nom:bus-types-and-scalars)=
+(prelim:bus-types-and-scalars)=
 # Bus types and scalars
 
 In this work, *buses* (or *nodes*) are classified into three types:
