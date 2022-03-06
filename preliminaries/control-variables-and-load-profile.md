@@ -22,7 +22,7 @@ $$
     \boldsymbol{q}_{ \mathsf{g} }   \, \\
 \end{matrix} \right]
 \in \mathbb{R}^{ 2G } \,.
-$$
+$$ (pg-qg-2-c)
 
 We reserve the variables names `pg` and `qg`
 for $\boldsymbol{p}_{ \mathsf{g} }$
@@ -51,7 +51,7 @@ $$
     \boldsymbol{q}_{ \mathsf{d} }   \, \\
 \end{matrix} \right]
 \in \mathbb{R}^{ 2D } \,.
-$$
+$$ (pd-qd-2-d)
 
 We reserve the variables names `pd` and `qd`
 for $\boldsymbol{p}_{ \mathsf{d} }$
@@ -94,7 +94,7 @@ $$
 =
 \boldsymbol{C}_{ \mathsf{G} } \, \boldsymbol{c}
 \, .
-$$
+$$ (c-prime)
 
 Similarly, the {ref}`load connection matrix <prelim:connection-mats:Cd>`
 the contributions of the load units to the power injections at the buses are computed as
@@ -125,4 +125,4 @@ $$
 =
 \boldsymbol{C}_{ \mathsf{D} } \, \boldsymbol{d}
 \, .
-$$
+$$ (d-prime)
