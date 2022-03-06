@@ -108,16 +108,24 @@ $$
 \, .
 $$
 
+```{margin}
+For the full expression of
+$\partial_{ \boldsymbol{s} } \boldsymbol{e} \! \left( \boldsymbol{s} \right)$,
+see Equations (27) through (32) in Secion 4.2.1 of
+[*MATPOWER Technical Note 2 Revision 2*](https://matpower.org/docs/TN2-OPF-Derivatives.pdf).
+```
+
 The Jacobian of $\boldsymbol{\phi}$ w.r.t. $\boldsymbol{s}$ is as the Jacobian of $\boldsymbol{e}$ w.r.t. $\boldsymbol{s}$,
-where the latter can be computed given $\boldsymbol{s}$[^about-deds].
+where the latter can be computed given $\boldsymbol{s}$.
 Hence, we have
 
-$$
+```{math}
+:label: jac-phi-wrt-s
 \partial_{ \boldsymbol{s} } \boldsymbol{\phi} \! \left( \boldsymbol{s} \right)
 =
 \partial_{ \boldsymbol{s} } \boldsymbol{e} \! \left( \boldsymbol{s} \right)
 \in \mathbb{R}^{ 2N \times 2N } \, .
-$$
+```
 
 In code, we use `de_ds` for both $\partial_{ \boldsymbol{s} } \boldsymbol{e}$
 and $\partial_{ \boldsymbol{s} } \boldsymbol{\phi}$.
@@ -125,7 +133,8 @@ and $\partial_{ \boldsymbol{s} } \boldsymbol{\phi}$.
 The Jacobian of $\boldsymbol{\phi}$ w.r.t. $\boldsymbol{c}$ is the negative of the Jacobian of $\boldsymbol{e}$ w.r.t. $\boldsymbol{c}$,
 *i.e.*,
 
-$$
+```{math}
+:label: jac-phi-wrt-c
 \partial_{ \boldsymbol{c} } \boldsymbol{\phi}
 =
 - \partial_{ \boldsymbol{c} } \boldsymbol{e}
@@ -140,7 +149,7 @@ $$
     \boldsymbol{C}_{ \mathsf{g} }   \, \\
 \end{matrix} \right]
 \in \mathbb{R}^{ 2N \times 2G } \, .
-$$
+```
 
 In code, we use `de_dc` for $\partial_{ \boldsymbol{c} } \boldsymbol{e}$,
 *i.e.*,
@@ -149,7 +158,8 @@ In code, we use `de_dc` for $\partial_{ \boldsymbol{c} } \boldsymbol{e}$,
 Similarly, the Jacobian of $\boldsymbol{\phi}$ w.r.t. $\boldsymbol{d}$ is the negative of the Jacobian of $\boldsymbol{e}$ w.r.t. $\boldsymbol{d}$,
 *i.e.*,
 
-$$
+```{math}
+:label: jac-phi-wrt-d
 \partial_{ \boldsymbol{d} } \boldsymbol{\phi}
 =
 - \partial_{ \boldsymbol{d} } \boldsymbol{e}
@@ -163,14 +173,11 @@ $$
     \boldsymbol{C}_{ \mathsf{d} }   \, \\
 \end{matrix} \right]
 \in \mathbb{R}^{ 2N \times 2D } \, .
-$$
+```
 
 In code, we use `de_dd` for $\partial_{ \boldsymbol{d} } \boldsymbol{e}$,
 *i.e.*,
 `-de_dd` refers to $\partial_{ \boldsymbol{d} } \boldsymbol{\phi}$.
-
-[^about-deds]: See Equations (27) through (32) in Secion 4.2.1 of
-[*MATPOWER Technical Note 2 Revision 2*](https://matpower.org/docs/TN2-OPF-Derivatives.pdf).
 
 ## Jacobians of $\boldsymbol{u}$
 
@@ -185,11 +192,12 @@ a very nice sparsity structure:
 it has $N$ diagonal elements corresponding to the $\boldsymbol{a}$-to-$\boldsymbol{\alpha}$ map,
 *i.e.*,
 
-$$
+```{math}
+:label: jac-alp-wrt-a
 \frac{\partial \alpha_{i}}{\partial a_{i}} = \frac{1}{a_{i}},
 \qquad \qquad i = 1, 2, \ldots, N
 \, ,
-$$
+```
 
 and
 a block diagonal of $E$ $2 \times 2$ matrices
@@ -197,7 +205,8 @@ corresponding to the map transforming $\boldsymbol{k}$ and $\boldsymbol{r}$ to
 $\boldsymbol{\kappa}$ and $\boldsymbol{\rho}$,
 *i.e.*,
 
-$$
+```{math}
+:label: jac-kaprho-wrt-kr
 \left[ \begin{matrix}
     \dfrac{\partial \kappa_{i}}{\partial k_{i}}
     &
@@ -216,24 +225,26 @@ $$
 \end{matrix} \right],
 \qquad \qquad i = 1, 2, \ldots, E
 \, .
-$$
+```
 
 Its inverse,
 $\partial_{ \boldsymbol{y} }^{-1} \boldsymbol{u} \! \left( \boldsymbol{y} \right) = \partial_{ \boldsymbol{y} }^{-1} \operatorname{sigma} \! \left( \boldsymbol{y} \right) \in \mathbb{R}^{ \left( N + 2E \right) \times \left( N + 2E \right) }$,
 therefore inherists the same sparsity structure
 consisting of $N$ diagonal elements, *i.e.*,
 
-$$
+```{math}
+:label: inv-jac-alp-wrt-a
 \left(
     \frac{\partial \alpha_{i}}{\partial a_{i}}
 \right)^{\!-1} = a_{i},
 \qquad \qquad i = 1, 2, \ldots, N
 \, ,
-$$
+```
 
 and a block diagonal of $E$ $2 \times 2$ matrices, *i.e.*,
 
-$$
+```{math}
+:label: inv-jac-kaprho-wrt-kr
 \left[ \begin{matrix}
     \dfrac{\partial \kappa_{i}}{\partial k_{i}}
     &
@@ -252,7 +263,7 @@ $$
     r_{i} & 2k_{i}
 \end{matrix} \right],
 \qquad \qquad i = 1, 2, \ldots, E \, .
-$$
+```
 
 For instance, with $N = 5$ and $E = 3$,
 both
@@ -289,13 +300,15 @@ as the product of the transpose of
 $\partial_{ \boldsymbol{y} }^{-1} \operatorname{sigma} \! \left( \boldsymbol{y} \right)$
 and itself, that is,
 
-$$
+```{math}
+:label: U
 \boldsymbol{U} \! \left( \boldsymbol{y} \right)
 =
 \partial_{ \boldsymbol{y} }^{-\mathsf{T}} \operatorname{sigma} \! \left( \boldsymbol{y} \right)
+\thinspace \thinspace
 \partial_{ \boldsymbol{y} }^{-1} \operatorname{sigma} \! \left( \boldsymbol{y} \right)
 \in \mathbb{R}^{ \left( N + 2E \right) \times \left( N + 2E \right) }.
-$$
+```
 
 It is straightforward to show that
 $\boldsymbol{U} \! \left( \boldsymbol{y} \right)$
