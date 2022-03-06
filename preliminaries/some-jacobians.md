@@ -17,7 +17,34 @@ is evaluated at some quantity $\boldsymbol{t}$.
 
 ## Jacobians of $\boldsymbol{\phi}$
 
-From {ref}`prelim:pow-flow-eqns:residuals`,
+Consider Equations {ref}`(y-c-d-2-phi)` and {ref}`(s-c-d-2-phi)` :
+
+$$
+\boldsymbol{\phi} \! \left( \boldsymbol{y}, \boldsymbol{c}, \boldsymbol{d} \right)
+\triangleq
+\boldsymbol{E} \boldsymbol{y}
+-
+\left[ \begin{matrix}
+    \boldsymbol{C}_{ \mathsf{g} }
+    &
+    \boldsymbol{0}_{ N,G }          \, \\
+    \boldsymbol{0}_{ N,G }
+    &
+    \boldsymbol{C}_{ \mathsf{g} }   \, \\
+\end{matrix} \right]
+\boldsymbol{c}
+\, +
+\left[ \begin{matrix}
+    \boldsymbol{C}_{ \mathsf{d} }
+    &
+    \boldsymbol{0}_{ N,D }          \, \\
+    \boldsymbol{0}_{ N,D }
+    &
+    \boldsymbol{C}_{ \mathsf{d} }   \, \\
+\end{matrix} \right]
+\boldsymbol{d}
+\, ,
+$$
 
 $$
 \boldsymbol{\phi} \! \left( \boldsymbol{s}, \boldsymbol{c}, \boldsymbol{d} \right)
@@ -56,35 +83,6 @@ $$
 }_{
     \boldsymbol{e} \left( \boldsymbol{s} \right)
 }
--
-\left[ \begin{matrix}
-    \boldsymbol{C}_{ \mathsf{g} }
-    &
-    \boldsymbol{0}_{ N,G }          \, \\
-    \boldsymbol{0}_{ N,G }
-    &
-    \boldsymbol{C}_{ \mathsf{g} }   \, \\
-\end{matrix} \right]
-\boldsymbol{c}
-\, +
-\left[ \begin{matrix}
-    \boldsymbol{C}_{ \mathsf{d} }
-    &
-    \boldsymbol{0}_{ N,D }          \, \\
-    \boldsymbol{0}_{ N,D }
-    &
-    \boldsymbol{C}_{ \mathsf{d} }   \, \\
-\end{matrix} \right]
-\boldsymbol{d}
-\, ,
-$$
-
-and
-
-$$
-\boldsymbol{\phi} \! \left( \boldsymbol{y}, \boldsymbol{c}, \boldsymbol{d} \right)
-\triangleq
-\boldsymbol{E} \boldsymbol{y}
 -
 \left[ \begin{matrix}
     \boldsymbol{C}_{ \mathsf{g} }
