@@ -131,7 +131,7 @@ $$
 \boldsymbol{d}
 \, \, \in \mathbb{R}^{ 2N }
 \, ,
-$$
+$$ (y-c-d-2-phi)
 
 or, in terms of
 $\boldsymbol{e} \! \left( \boldsymbol{s} \right)$
@@ -198,7 +198,7 @@ $$
     \boldsymbol{d}
     \, .
 \end{aligned}
-$$
+$$ (s-c-d-2-phi)
 
 The *reduced nodal residual vector* $\boldsymbol{\psi}$ is formed by simply dropping the components of
 $\boldsymbol{\phi}$ corresponding to the slack bus, *i.e.*,
@@ -212,7 +212,7 @@ $$
 \end{matrix} \right]
 \in \mathbb{R}^{ 2N - 2N_{ \mathsf{s} } }
 \, .
-$$
+$$ (phi-2-psi)
 
 In other words, one can get
 $\boldsymbol{\psi} \! \left( \boldsymbol{y}, \boldsymbol{c}, \boldsymbol{d} \right)$
