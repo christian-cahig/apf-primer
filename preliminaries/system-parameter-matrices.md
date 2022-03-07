@@ -9,23 +9,21 @@ the net current phasors injected at the buses
 are a linear function of the corresponding voltage phasors;
 the *system bus admittance matrix*
 $\mathbf{Y} \in \mathbb{C}^{N \times N}$
-is the coefficient of such (complex) linear system[^about-Y].
+is the coefficient of such (complex) linear system.
+For brevity, we leave out the details on how $\mathbf{Y}$ is calculated;
+please refer to Sections 3.2, 3.5, and 3.6 of
+[*MATPOWER User's Manual version 7.1*](https://matpower.org/docs/MATPOWER-manual-7.1.pdf),
+or to Section 4 of
+[*An introduction to optimal power flow: Theory, formulation, and examples*](https://doi.org/10.1080/0740817X.2016.1189626).
+
 One can think of $\mathbf{Y}$ to be jointly encoding
-the power system's intrinsic parameters (*i.e.*, impedances and admittances)
+the system's intrinsic parameters (*i.e.*, impedances and admittances)
 and topology (*i.e.*, sparsity structure).
 In Cartesian notation,
 $\mathbf{Y} = \boldsymbol{G} + j\boldsymbol{B}$,
 where $\boldsymbol{G}$ and $\boldsymbol{B}$ are the respective conductance and susceptance components.
 We reserve the variable names `Y`, `G`, and `B` for
 $\mathbf{Y}$, $\boldsymbol{G}$, and $\boldsymbol{B}$, respectively.
-
-[^about-Y]: For brevity, we leave out the details on how $\mathbf{Y}$ is calculated.
-Please refer to
-Sections 3.2, 3.5, and 3.6 of
-[*MATPOWER User's Manual version 7.1*](https://matpower.org/docs/MATPOWER-manual-7.1.pdf),
-or to
-Section 4 of
-[*An introduction to optimal power flow: Theory, formulation, and examples*](https://doi.org/10.1080/0740817X.2016.1189626).
 
 (prelim:syst-param-mats:E-Z)=
 ## Conductance-susceptance matrices
@@ -73,7 +71,7 @@ $$
 \end{matrix} \right]
 \in \mathbb{R}^{ 2N \times \left( N + 2E \right) }
 \, ,
-$$
+$$ (E-step-1)
 
 and then permuting the right most $2E$ columns by "interweaving"
 the $\left( N + 1 \right)$-th through the $\left( N + E \right)$-th columns
@@ -102,12 +100,12 @@ $$
     \, \\
 \end{matrix} \right]
 \, .
-$$
+$$ (E-step-2)
 
 The *reduced conductance-susceptance matrix* $\boldsymbol{Z}$ is a submatrix of $\boldsymbol{E}$
 formed by dropping the topmost $N_{ \mathsf{s} }$ and the
 $\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
-rows of $\boldsymbol{E}$[^about-Z], *i.e.*,
+rows of $\boldsymbol{E}$, *i.e.*,
 
 $$
 \boldsymbol{Z}
@@ -118,7 +116,7 @@ $$
 \end{matrix} \right]
 \in \mathbb{R}^{ \left( 2N - 2N_{ \mathsf{s} } \right) \times \left( N + 2E \right) }
 \, .
-$$
+$$ (getting-Z)
 
 Formally,
 $\boldsymbol{E}$
@@ -142,6 +140,3 @@ $\boldsymbol{y}$,
 *i.e.*,
 $\boldsymbol{z} = \boldsymbol{Z} \boldsymbol{y}$.
 We reserve the variable names `E` and `Z` for $\boldsymbol{E}$ and for $\boldsymbol{Z}$, respectively.
-
-[^about-Z]: This corresponds to dropping the slack nodal injections.
-See {ref}`prelim:net-nodal-injs:ez-from-y`.
