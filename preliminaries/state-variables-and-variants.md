@@ -23,7 +23,7 @@ $$
     \boldsymbol{\delta} \, \\
 \end{matrix} \right]
 \in \mathbb{R}^{2N} \, .
-$$
+$$ (s)
 
 We reserve the variable names `vm` and `va`
 for $\boldsymbol{v}$
@@ -47,7 +47,7 @@ $$
 =
 \operatorname{diag} \! \left( \boldsymbol{v} \right) \boldsymbol{v}
 \, .
-$$
+$$ (a)
 
 Let $\mathsf{f}$ and $\mathsf{t}$ be used as subscripts
 to denote quantities at the from- and at the to-side buses, respectively, of the branches.
@@ -66,22 +66,22 @@ $\boldsymbol{k}$ and $\boldsymbol{r}$
 as
 
 $$
-\begin{aligned}
-    \boldsymbol{k}
-    & =
-    \operatorname{diag} \! \left( \boldsymbol{v}_{ \mathsf{f} } \right)
-    \operatorname{diag} \! \left( \boldsymbol{v}_{ \mathsf{t} } \right)
-    \cos \! \left( \boldsymbol{\delta}_{ \mathsf{f} } - \boldsymbol{\delta}_{ \mathsf{t} } \right)
-    \, ,
-    \\
-    \boldsymbol{r}
-    & =
-    \operatorname{diag} \! \left( \boldsymbol{v}_{ \mathsf{f} } \right)
-    \operatorname{diag} \! \left( \boldsymbol{v}_{ \mathsf{t} } \right)
-    \sin \! \left( \boldsymbol{\delta}_{ \mathsf{f} } - \boldsymbol{\delta}_{ \mathsf{t} } \right)
-    \, .
-\end{aligned}
+\boldsymbol{k}
+=
+\operatorname{diag} \! \left( \boldsymbol{v}_{ \mathsf{f} } \right)
+\operatorname{diag} \! \left( \boldsymbol{v}_{ \mathsf{t} } \right)
+\cos \! \left( \boldsymbol{\delta}_{ \mathsf{f} } - \boldsymbol{\delta}_{ \mathsf{t} } \right)
+\, ,
+$$ (k)
+
 $$
+\boldsymbol{r}
+=
+\operatorname{diag} \! \left( \boldsymbol{v}_{ \mathsf{f} } \right)
+\operatorname{diag} \! \left( \boldsymbol{v}_{ \mathsf{t} } \right)
+\sin \! \left( \boldsymbol{\delta}_{ \mathsf{f} } - \boldsymbol{\delta}_{ \mathsf{t} } \right)
+\, .
+$$ (r)
 
 We use `a`, `k`, and `r`
 as the respective variable names for
@@ -100,7 +100,7 @@ $$
 =
 2 \ln \! \left( \boldsymbol{v} \right)
 \, .
-$$
+$$ (alp)
 
 where $\ln \! \left( \cdot \right)$ applies componentwise.
 As with $\boldsymbol{v}_{ \mathsf{f} }$ and $\boldsymbol{v}_{ \mathsf{t} }$,
@@ -113,17 +113,18 @@ $\boldsymbol{\kappa}$ and $\boldsymbol{\rho}$
 as
 
 $$
-\begin{aligned}
-    \boldsymbol{\kappa}
-    & =
-    \boldsymbol{\alpha}_{ \mathsf{f} } + \boldsymbol{\alpha}_{ \mathsf{t} }
-    \, , \\
-    \boldsymbol{\rho}
-    & =
-    \boldsymbol{\delta}_{ \mathsf{f} } - \boldsymbol{\delta}_{ \mathsf{t} }
-    \, .
-\end{aligned}
+\boldsymbol{\kappa}
+=
+\boldsymbol{\alpha}_{ \mathsf{f} } + \boldsymbol{\alpha}_{ \mathsf{t} }
+\, , \\
+$$ (kap)
+
 $$
+\boldsymbol{\rho}
+=
+\boldsymbol{\delta}_{ \mathsf{f} } - \boldsymbol{\delta}_{ \mathsf{t} }
+\, .
+$$ (rho)
 
 We use `alp`, `kap`, and `rho`
 as the respective variable names for
@@ -146,14 +147,19 @@ $$
     \boldsymbol{\delta}_{ \mathsf{q} } \, \\
 \end{matrix} \right]
 \in \mathbb{R}^{ 2N - N_{ \mathsf{s} } }
-$$
+$$ (x)
 
 with `x` as the dedicated variable name.
 
 (prelim:state-vars:y-u)=
 ## Canonicalized state vector and its sigma transform
 
-The *canonicalized state vector*[^about-canon]
+```{margin}
+The term "canonicalized" is based on "canonical forms" in
+[*Factored solution of nonlinear equation systems*](https://doi.org/10.1098/rspa.2014.0236).
+```
+
+The *canonicalized state vector*
 $\boldsymbol{y}$
 is the concatenation of $\boldsymbol{a}$
 and the "interweaving" of $\boldsymbol{k}$ and $\boldsymbol{r}$,
@@ -175,7 +181,7 @@ $$
     r_{E}           \, \\
 \end{matrix} \right]
 \in \mathbb{R}^{ N + 2E }
-$$
+$$ (y)
 
 with `y` as the exclusive variable name.
 
@@ -201,7 +207,7 @@ $$
     \rho_{E}            \, \\
 \end{matrix} \right]
 \in \mathbb{R}^{ N + 2E }
-$$
+$$ (u)
 
 with `u` as the reserved variable name.
 
@@ -237,7 +243,7 @@ $$
     \right)
     \, , \\
 \end{matrix}
-$$
+$$ (sigma-map)
 
 where
 $\operatorname{arctan} \! \left( \cdot \right)$
@@ -278,7 +284,7 @@ $$
     \sin \! \left( \boldsymbol{\rho} \right)
     \, , \\
 \end{matrix}
-$$
+$$ (arcsigma-map)
 
 where
 $\exp \! \left( \cdot \right)$
@@ -288,7 +294,3 @@ indicate exponentiating and taking the square-root componentwise, respectively.
 Since the inverse sigma transform can be thought of as a function
 that takes $\boldsymbol{u}$ as input,
 it is implemented in code as a function with the call signature `arcsigma(y)`.
-
-[^about-canon]: The term 'canonicalized' is an adaptation of the "canonical forms" in
-Sections 3 and 4 of
-[*Factored solution of nonlinear equation systems*](https://doi.org/10.1098/rspa.2014.0236).
