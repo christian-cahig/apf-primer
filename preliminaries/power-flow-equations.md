@@ -12,13 +12,6 @@ must match that from the control variables and the load profile,
 $\boldsymbol{e} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$,
 *i.e.*,
 
-```{margin}
-Another prominent formulation is the *branch flow model (BFM)*.
-See Sections 5.1 and 5.2 of
-[*An introduction to optimal power flow: Theory, formulation, and examples*](https://doi.org/10.1080/0740817X.2016.1189626)
-for a comparison between BIM and BFM.
-```
-
 $$
 \left[ \begin{matrix}
     \operatorname{ diag } \! \left( \boldsymbol{v}_{ \mathsf{r} } \right)
@@ -74,12 +67,6 @@ to match
 $\boldsymbol{e} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$.
 This restatement gives us two linear systems coupled by an elementary nonlinear map:
 
-```{margin}
-Equation {eq}`pf-eqns-fac` is based on, but is not the same as,
-Equations (27) and (28) of
-[*Factorized Load Flow*](https://doi.org/10.1109/TPWRS.2013.2265298).
-```
-
 $$
 \left\{ \begin{aligned}
     \boldsymbol{E} \boldsymbol{y}
@@ -90,6 +77,10 @@ $$
 \end{aligned} \right.
 \, .
 $$ (pf-eqns-fac)
+
+Equation {eq}`pf-eqns-fac` is based on, but is not the same as,
+Equations (27) and (28) of
+[*Factorized Load Flow*](https://doi.org/10.1109/TPWRS.2013.2265298).
 
 (prelim:pow-flow-eqns:residuals)=
 ## Nodal power residuals
