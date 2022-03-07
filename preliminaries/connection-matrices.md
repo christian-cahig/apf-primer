@@ -64,7 +64,12 @@ The variable name `Cd` is reserved for $\boldsymbol{C}_{\mathsf{d} }$.
 ## Generalized branch connection matrix
 
 The *generalized branch connection matrix* $\boldsymbol{C}$
-is obtained by first setting it to be[^about-C]
+is obtained by first setting it to be
+
+```{margin}
+Equation {eq}`Cg-step-1` is based on Equation (45) of
+[*Bilinear Power System State Estimation*](https://doi.org/10.1109/TPWRS.2011.2162256).
+```
 
 $$
 \boldsymbol{C}
@@ -80,7 +85,7 @@ $$
     \left[ \boldsymbol{C}_{ \mathsf{t} } \right]_{:, \, N_{ \mathsf{s} } + 1 :}     \,\,\, \\
 \end{matrix} \right]
 \in \mathbb{R}^{ \left( N + 2E \right) \times \left( 2N - N_{ \mathsf{s} } \right) }
-$$
+$$ (Cg-step-1)
 
 where
 $\boldsymbol{I}_{N}$ denotes an $N \times N$ identity matrix
@@ -106,7 +111,7 @@ $$
     \boldsymbol{C}_{N + E, \, :}        \, \\
     \boldsymbol{C}_{N + 2E, \, :}       \, \\
 \end{matrix} \right]
-$$
+$$ (Cg-step-2)
 
 We use `C` as the dedicated variable name for $\boldsymbol{C}$.
 Formally,
@@ -119,6 +124,3 @@ as
 $\boldsymbol{u} = \boldsymbol{C} \boldsymbol{x}$.
 This linear relation is the second component of
 {ref}`the factored formulation of the power flow equations <prelim:pow-flow-eqns:balance>`.
-
-[^about-C]: This is based on Equation (45) of
-[*Bilinear Power System State Estimation*](https://doi.org/10.1109/TPWRS.2011.2162256).
