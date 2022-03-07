@@ -22,17 +22,13 @@ First, we estimate the anticipated generator injections using the previous-snaps
 Then, we form the power flow equations at the non-slack buses, and from them solve for the corresponding bus voltages.
 Lastly, we adjust our estimate of slack-bus generator injections according to the computed bus voltages.
 
-```{margin}
-**Factored Newton-Raphson**
-See
+There are two highlights in this work.
+First, we describe methods for estimating the anticipated generator injections using the snapshot and dispatch data.
+Second, we present a method for solving the bus voltages through the *factored Newton-Raphson* method,
+which was introduced in the works
 [*Factorized Load Flow*](https://doi.org/10.1109/TPWRS.2013.2265298)
 and
 [*Factored solution of nonlinear equation systems*](https://doi.org/10.1098/rspa.2014.0236).
-```
-
-There are two highlights in this work.
-First, we describe methods for estimating the anticipated generator injections using the snapshot and dispatch data.
-Second, we present a method for solving the bus voltages through a slightly modified version of the *factored Newton-Raphson* method.
 
 This website is the accompanying primer to the repository
 [github.com/christian-cahig/Masterarbeit-APF](https://github.com/christian-cahig/Masterarbeit-APF).
