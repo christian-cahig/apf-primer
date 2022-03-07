@@ -17,7 +17,7 @@ is evaluated at some quantity $\boldsymbol{t}$.
 
 ## Jacobians of $\boldsymbol{\phi}$
 
-Consider Equations {ref}`(y-c-d-2-phi)` and {ref}`(s-c-d-2-phi)` :
+Consider Equations {eq}`y-c-d-2-phi` and {eq}`s-c-d-2-phi` :
 
 $$
 \boldsymbol{\phi} \! \left( \boldsymbol{y}, \boldsymbol{c}, \boldsymbol{d} \right)
