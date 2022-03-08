@@ -24,7 +24,7 @@ $$
 \end{matrix} \right]
 \in \mathbb{R}^{2N}
 \, .
-$$
+$$ (e)
 
 Removing from $\boldsymbol{e}$ the net active and reactive injections at the slack buses yields
 the *reduced net nodal injection vector* $\boldsymbol{z}$,
@@ -46,7 +46,7 @@ $$
 \end{matrix} \right]
 \in \mathbb{R}^{ 2N - 2N_{ \mathsf{s} } }
 \, ,
-$$
+$$ (e-2-z)
 
 following {ref}`the partitioning scheme <prelim:bus-indexing:vecs-n>` for $N$-vectors.
 We reserve the variable names `e` and `z` for $\boldsymbol{e}$ and for $\boldsymbol{z}$, respectively.
@@ -73,7 +73,7 @@ j
     \boldsymbol{C}_{ \mathsf{d} } \, \boldsymbol{q}_{ \mathsf{d} }
 \right)
 \, ,
-$$
+$$ (cd-2-pq)
 
 or, in terms of $\boldsymbol{c}$, and $\boldsymbol{d}$,
 
@@ -106,7 +106,7 @@ $$
 -
 \boldsymbol{C}_{ \mathsf{D} } \, \boldsymbol{d}
 \, .
-$$
+$$ (cd-2-e)
 
 To get $\boldsymbol{z} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$,
 simply drop the first $N_{ \mathsf{s} }$
@@ -125,7 +125,7 @@ $$
 \operatorname{ diag } \! \left( \mathbf{v} \right)
 \operatorname{ conj } \! \left( \mathbf{Y} \mathbf{v} \right)
 \,
-$$
+$$ (vbus-2-pq)
 
 where
 $\mathbf{v} = \operatorname{ diag } \! \left( \boldsymbol{v} \right) \exp \! \left( j \boldsymbol{\delta} \right) \in \mathbb{C}^{ 2N }$
@@ -170,7 +170,7 @@ $$
     \right)
     \, ,
 \end{aligned}
-$$
+$$ (vr-vi-2-pq)
 
 with
 $\boldsymbol{v}_{ \mathsf{r} } = \operatorname{ diag } \! \left( \boldsymbol{v} \right) \cos \! \left( \boldsymbol{\delta} \right)$
@@ -212,7 +212,7 @@ $$
     \\
 \end{matrix} \right]
 \, .
-$$
+$$ (s-2-e)
 
 To get $\boldsymbol{z} \! \left( \boldsymbol{v}, \boldsymbol{\delta} \right)$,
 simply drop the first $N_{ \mathsf{s} }$
@@ -222,26 +222,32 @@ elements of $\boldsymbol{e} \! \left( \boldsymbol{v}, \boldsymbol{\delta} \right
 (prelim:net-nodal-injs:ez-from-y)=
 ## Calculating $\boldsymbol{e}$ from $\boldsymbol{y}$
 
+```{margin}
+To obtain Equation {eq}`y-2-e`, start with the bus injection model
+(*e.g.*, see Section 5.1 of
+[*An introduction to optimal power flow: Theory, formulation, and examples*](https://doi.org/10.1080/0740817X.2016.1189626)),
+then rearrange terms to form $\boldsymbol{a}$ {eq}`a`, $\boldsymbol{k}$ {eq}`k`, and $\boldsymbol{r}$ {eq}`r`.
+The coefficients of $\boldsymbol{a}$, $\boldsymbol{k}$, and $\boldsymbol{r}$
+should initialize $\boldsymbol{E}$ according to Equation {eq}`E-step-1`.
+Lastly, build $\boldsymbol{y}$ from $\boldsymbol{a}$, $\boldsymbol{k}$, and $\boldsymbol{r}$ {eq}`y`,
+and apply the column permutations in Equation {eq}`E-step-2`.
+```
+
 With judicious algebraic manipulation,
-the net nodal injections are a linear function of $\boldsymbol{y}$[^about-E],
+the net nodal injections are a linear function of $\boldsymbol{y}$,
 *i.e.*,
 
 $$
 \boldsymbol{e} \! \left( \boldsymbol{y} \right) = \boldsymbol{E} \boldsymbol{y} \, .
-$$
+$$ (y-2-e)
 
 Neglecting the slack-nodal injections,
 we can express $\boldsymbol{z}$ as a linear function of $\boldsymbol{y}$, too:
 
 $$
 \boldsymbol{z} \! \left( \boldsymbol{y} \right) = \boldsymbol{Z} \boldsymbol{y} \, ,
-$$
+$$ (y-2-z)
 
 which is equivalent to dropping the first $N_{ \mathsf{s} }$
 and the $\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s} } \right)$-th
 elements of $\boldsymbol{e} \! \left( \boldsymbol{y} \right)$.
-
-[^about-E]: As a hint, start with the bus injection model
-(*e.g.*, see Section 5.1 of
-[*An introduction to optimal power flow: Theory, formulation, and examples*](https://doi.org/10.1080/0740817X.2016.1189626)),
-and try to transform the explicit summations into a matrix-vector expression.
