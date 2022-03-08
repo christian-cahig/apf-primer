@@ -42,7 +42,7 @@ The change in total power draw is
 \end{aligned}
 ```
 
-The anticiapted changes in total injections by the generators can then be approximated *naively* as
+The anticipated changes in total injections by the generators can then be approximated *naively* as
 
 ```{math}
 :label: mol-change-in-c-naive
