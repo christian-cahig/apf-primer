@@ -275,9 +275,7 @@ leaving us with
 \, .
 ```
 
-We discuss the coefficient matrix in Equation {eq}`moj-change-s`
-and the matrix multiplier in Equation {eq}`moj-change-c`
-in {ref}`a later subsection <apf-prc:antic-injs:moj:cal-jac>`.
+We discuss the coefficient matrix in Equation {eq}`moj-change-s` and the matrix multiplier in Equation {eq}`moj-change-c` later.
 
 The "effective" approximate changes in the total generator injections will have "contributions" from $\Delta \boldsymbol{c}$ and $\widetilde{ p }_{ \mathsf{l} } + j \widetilde{ q }_{ \mathsf{l} }$.
 Then, in a manner similar to {ref}`the method of Lateef<apf-prc:antic-injs:mol>`,
@@ -384,9 +382,6 @@ they have fundamentally different approaches to calculating $\Delta p_{ \mathsf{
     \, .
 \end{aligned}
 ```
-
-(apf-prc:antic-injs:moj:cal-jac)=
-### Calculating the Jacobians
 
 To calcualte the Jacobian of $\boldsymbol{s}$ w.r.t. $\boldsymbol{d}^{ \prime }$,
 we can take the former to be an implicitly defined function solely of the latter
