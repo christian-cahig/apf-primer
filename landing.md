@@ -1,10 +1,12 @@
 # Overview
 
+<!--
 ```{margin}
 **Standard AC power flow**
 See Section 4.1 of
 [*MATPOWER User's Manual version 7.1*](https://matpower.org/docs/MATPOWER-manual-7.1.pdf).
 ```
+-->
 
 ***Anticipatory power flow (APF)*** is an extension of the *standard AC power flow* problem.
 Given a set of *previous-snapshot data*
