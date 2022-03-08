@@ -6,6 +6,10 @@ One method is a simple algebraic procedure that calculates a change in total gen
 and distributes such aggregate change among the individual units according to their scheduled bounds.
 The other method is more involved as it involves computing first-order information to approximate sensitivities.
 
+In the following, we use $\operatorname{ReLU} \! \left( \cdot \right)$ as the shorthand for the operation $\max \left( 0, \cdot \right)$ .
+To avoid explicit summations and multiplying by $\boldsymbol{1}^{ \! \mathsf{T} }$,
+we use $\operatorname{sum} \! \left( \cdot \right)$ to denote the sum of all the elements in an array.
+
 (apf-prc:antic-injs:mol)=
 ## The method of Lateef
 
@@ -85,12 +89,10 @@ A *conservative* approach would be to at least maintain the total supply, *i.e.*
         +
         \widetilde{ q }_{ \mathsf{l} }
     \right)
-    \, ,
+    \, .
 \end{aligned}
 ```
 
-where
-$\operatorname{ReLU} \! \left( \cdot \right) \triangleq \max \left( 0, \cdot \right)$.
 A *strictly-increasing* flavour of {eq}`mol-change-in-sum-c-naive` can even be used when it is certain that total demand will increase:
 
 ```{math}
@@ -115,9 +117,7 @@ A *strictly-increasing* flavour of {eq}`mol-change-in-sum-c-naive` can even be u
 \end{aligned}
 ```
 
-Let $\overline{ \boldsymbol{p} }_{ \mathsf{g} }, \overline{ \boldsymbol{q} }_{ \mathsf{g} } \in \mathbb{R}^{G}$ be the scheduled upper bounds on the generator injections,
-with $\overline{ p }_{ \mathsf{g}, i }$ and $\overline{ q }_{ \mathsf{g}, i }$ being the bounds for unit $i$;
-define $\overline{ p }_{g} = \sum \overline{ p }_{ \mathsf{g}, i }$ and $\overline{ q }_{g} = \sum \overline{ q }_{ \mathsf{g}, i }$ as the sums of the bounds.
+Let $\overline{ \boldsymbol{p} }_{ \mathsf{g} }, \overline{ \boldsymbol{q} }_{ \mathsf{g} } \in \mathbb{R}^{G}$ be the scheduled upper bounds on the generator injections.
 Then the anticipated control variables are calculated as
 
 ```{math}
@@ -125,13 +125,21 @@ Then the anticipated control variables are calculated as
 \begin{aligned}
     \boldsymbol{p}_{ \mathsf{g} }
     & \approx
-    \frac{ \widetilde{ p }_{ \mathsf{g} } + \Delta p_{ \mathsf{g} } }{ \overline{ p }_{g} }
+    \frac{ 
+        \widetilde{ p }_{ \mathsf{g} } + \Delta p_{ \mathsf{g} }
+    }{
+        \operatorname{sum} \! \left( \overline{ \boldsymbol{p} }_{ \mathsf{g} } \right)
+    }
     \thinspace
     \overline{\boldsymbol{p}}_{ \mathsf{g} }
     \, , \\
     \boldsymbol{q}_{ \mathsf{g} }
     & \approx
-    \frac{ \widetilde{ q }_{ \mathsf{g} } + \Delta q_{ \mathsf{g} } }{ \overline{ q }_{g} }
+    \frac{
+        \widetilde{ q }_{ \mathsf{g} } + \Delta q_{ \mathsf{g} }
+    }{
+        \operatorname{sum} \! \left( \overline{ \boldsymbol{q} }_{ \mathsf{g} } \right)
+    }
     \thinspace
     \overline{\boldsymbol{q}}_{ \mathsf{g} }
     \, . 
@@ -272,7 +280,6 @@ and the matrix multiplier in Equation {eq}`moj-change-c`
 in {ref}`a later subsection <apf-prc:antic-injs:moj:cal-jac>`.
 
 The "effective" approximate changes in the total generator injections will have "contributions" from $\Delta \boldsymbol{c}$ and $\widetilde{ p }_{ \mathsf{l} } + j \widetilde{ q }_{ \mathsf{l} }$.
-Let $\operatorname{ sum } \! \left( \cdot \right)$ denote the sum of all the elements in an array.
 Then, in a manner similar to {ref}`the method of Lateef<apf-prc:antic-injs:mol>`,
 the anticipated changes in total generator injections can be approximated *naively* as
 
@@ -281,13 +288,13 @@ the anticipated changes in total generator injections can be approximated *naive
 \begin{aligned}
     \Delta p_{ \mathsf{g} }
     & \approx
-    \operatorname{ sum } \! \left( \Delta \boldsymbol{p}_{ \mathsf{g} } \right)
+    \operatorname{sum} \! \left( \Delta \boldsymbol{p}_{ \mathsf{g} } \right)
     +
     \widetilde{ p }_{ \mathsf{l} }
     \, , \\
     \Delta q_{ \mathsf{g} }
     & \approx
-    \operatorname{ sum } \! \left( \Delta \boldsymbol{q}_{ \mathsf{g} } \right)
+    \operatorname{sum} \! \left( \Delta \boldsymbol{q}_{ \mathsf{g} } \right)
     +
     \widetilde{ q }_{ \mathsf{l} }
     \, , \\
@@ -302,7 +309,7 @@ the anticipated changes in total generator injections can be approximated *naive
     \Delta p_{ \mathsf{g} }
     & \approx
     \operatorname{ ReLU } \! \left(
-        \operatorname{ sum } \! \left( \Delta \boldsymbol{p}_{ \mathsf{g} } \right)
+        \operatorname{sum} \! \left( \Delta \boldsymbol{p}_{ \mathsf{g} } \right)
         +
         \widetilde{ p }_{ \mathsf{l} }
     \right)
@@ -310,7 +317,7 @@ the anticipated changes in total generator injections can be approximated *naive
     \Delta q_{ \mathsf{g} }
     & \approx
     \operatorname{ ReLU } \! \left(
-        \operatorname{ sum } \! \left( \Delta \boldsymbol{q}_{ \mathsf{g} } \right)
+        \operatorname{sum} \! \left( \Delta \boldsymbol{q}_{ \mathsf{g} } \right)
         +
         \widetilde{ q }_{ \mathsf{l} }
     \right)
@@ -326,7 +333,7 @@ or in a *strictly increasing* manner as
     \Delta p_{ \mathsf{g} }
     & \approx
     \operatorname{ ReLU } \! \left(
-        \operatorname{ sum } \! \left( \Delta \boldsymbol{p}_{ \mathsf{g} } \right)
+        \operatorname{sum} \! \left( \Delta \boldsymbol{p}_{ \mathsf{g} } \right)
     \right)
     +
     \widetilde{ p }_{ \mathsf{l} }
@@ -334,7 +341,7 @@ or in a *strictly increasing* manner as
     \Delta q_{ \mathsf{g} }
     & \approx
     \operatorname{ ReLU } \! \left(
-        \operatorname{ sum } \! \left( \Delta \boldsymbol{q}_{ \mathsf{g} } \right)
+        \operatorname{sum} \! \left( \Delta \boldsymbol{q}_{ \mathsf{g} } \right)
     \right)
     +
     \widetilde{ q }_{ \mathsf{l} }
@@ -357,13 +364,21 @@ they have fundamentally different approaches to calculating $\Delta p_{ \mathsf{
 \begin{aligned}
     \boldsymbol{p}_{ \mathsf{g} }
     & \approx
-    \frac{ \widetilde{ p }_{ \mathsf{g} } + \Delta p_{ \mathsf{g} } }{ \overline{ p }_{g} }
+    \frac{ 
+        \widetilde{ p }_{ \mathsf{g} } + \Delta p_{ \mathsf{g} }
+    }{
+        \operatorname{sum} \! \left( \overline{ \boldsymbol{p} }_{ \mathsf{g} } \right)
+    }
     \thinspace
     \overline{\boldsymbol{p}}_{ \mathsf{g} }
     \, , \\
     \boldsymbol{q}_{ \mathsf{g} }
     & \approx
-    \frac{ \widetilde{ q }_{ \mathsf{g} } + \Delta q_{ \mathsf{g} } }{ \overline{ q }_{g} }
+    \frac{
+        \widetilde{ q }_{ \mathsf{g} } + \Delta q_{ \mathsf{g} }
+    }{
+        \operatorname{sum} \! \left( \overline{ \boldsymbol{q} }_{ \mathsf{g} } \right)
+    }
     \thinspace
     \overline{\boldsymbol{q}}_{ \mathsf{g} }
     \, .
