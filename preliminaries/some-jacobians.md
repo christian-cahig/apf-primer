@@ -177,6 +177,7 @@ In code, we use `de_dd` for $\partial_{ \boldsymbol{d} } \boldsymbol{e}$,
 *i.e.*,
 `-de_dd` refers to $\partial_{ \boldsymbol{d} } \boldsymbol{\phi}$.
 
+(prelim:some-jacobians:jac-of-u)=
 ## Jacobians of $\boldsymbol{u}$
 
 Let
