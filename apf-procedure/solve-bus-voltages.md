@@ -30,31 +30,29 @@ The process is summarized in {prf:ref}`alg-solve-for-s`.
 :label: alg-solve-for-s
 
 **Inputs**
-$\widetilde{ \boldsymbol{s} }$,
+$\widetilde{ \boldsymbol{v} }$, $\widetilde{ \boldsymbol{\delta} }$,
 $\boldsymbol{d}$, $\boldsymbol{c}$,
 $\boldsymbol{C}$, $\boldsymbol{Z}$,
 $\delta_{ \mathsf{ref} }$,
-$\epsilon > 0$,
-$K \in \mathbb{Z}_{ + }$
+$\epsilon > 0$
 
 **Returns**
 $\boldsymbol{v}$ and $\boldsymbol{\delta}$
 
-1. Calculate $\boldsymbol{y}$ from $\widetilde{ \boldsymbol{s} }$,
-   and $\boldsymbol{z} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$.
-2. $k \gets 0$
+1. Calculate $\boldsymbol{y}$ from $\widetilde{ \boldsymbol{v} }$ and $\widetilde{ \boldsymbol{\delta} }$.
+2. Calculate $\boldsymbol{z} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$.
 3. $\boldsymbol{\psi} \gets \boldsymbol{Z} \boldsymbol{y} - \boldsymbol{z} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$
 4. If $\lVert \boldsymbol{\psi} \rVert_{ \infty } \leq \epsilon$, go to Step 14.
 5. Solve for $\widehat{ \boldsymbol{\mu} }$ in
-   $\boldsymbol{Z} \boldsymbol{Z}^{ \mathsf{T} } \widehat{ \boldsymbol{\mu} } = \boldsymbol{\psi} $
+   $\boldsymbol{Z} \boldsymbol{Z}^{ \mathsf{T} } \widehat{ \boldsymbol{\mu} } = \boldsymbol{\psi} $.
 6. $\widehat{ \boldsymbol{y} } \gets \boldsymbol{y} - \boldsymbol{Z}^{ \mathsf{T} } \widehat{ \boldsymbol{\mu} }$
-7. Calculate $\partial_{ \boldsymbol{y} }^{ -1 } \operatorname{sigma} \! \left( \widehat{ \boldsymbol{y} } \right)$
-8. Calculate $\boldsymbol{U} \! \left( \widehat{ \boldsymbol{y} } \right)$
+7. Calculate $\partial_{ \boldsymbol{y} }^{ -1 } \operatorname{sigma} \! \left( \widehat{ \boldsymbol{y} } \right)$.
+8. Calculate $\boldsymbol{U} \! \left( \widehat{ \boldsymbol{y} } \right)$.
 9. $\boldsymbol{M} \gets \boldsymbol{C}^{ \mathsf{T} } \boldsymbol{U} \! \left( \widehat{ \boldsymbol{y} } \right)$,
    $\boldsymbol{N} \gets \boldsymbol{Z} \, \partial_{ \boldsymbol{y} }^{ -1 } \operatorname{sigma} \! \left( \widehat{ \boldsymbol{y} } \right)$,
    $\boldsymbol{H} \gets \boldsymbol{N} \boldsymbol{C}$,
    $\widehat{ \boldsymbol{u} } \gets \operatorname{sigma} \! \left( \widehat{ \boldsymbol{y} } \right)$
-10. Calculate $\boldsymbol{x}$ by solving
+10. Solve for $\boldsymbol{w}$ in
 
     $$
         \left[ \begin{matrix}
@@ -62,21 +60,46 @@ $\boldsymbol{v}$ and $\boldsymbol{\delta}$
             \boldsymbol{H} & \boldsymbol{0} \,
         \end{matrix} \right]
         \left[ \begin{matrix}
-            \boldsymbol{x} \, \\
-            \boldsymbol{\mu} \,
+            \boldsymbol{x} \\
+            \boldsymbol{\mu}
         \end{matrix} \right]
+        =
+        \left[ \begin{matrix}
+            \boldsymbol{M} \boldsymbol{C} & \boldsymbol{H}^{ \mathsf{T} } \, \\
+            \boldsymbol{H} & \boldsymbol{0} \,
+        \end{matrix} \right]
+        \boldsymbol{w}
         =
         \left[ \begin{matrix}
             \boldsymbol{M} \widehat{ \boldsymbol{u} } + \boldsymbol{H}^{ \mathsf{T} } \widehat{ \boldsymbol{\mu} }
             \, \\
             \boldsymbol{N} \widehat{ \boldsymbol{u} } \,
         \end{matrix} \right]
+        .
     $$
 
-11. $k \gets k + 1$
+11. Get $\boldsymbol{x}$ from $\boldsymbol{w}$.
 12. $\boldsymbol{y} \gets \operatorname{arcsigma} \! \left( \boldsymbol{C} \boldsymbol{x} \right)$
 13. $\boldsymbol{\psi} \gets \boldsymbol{Z} \boldsymbol{y} - \boldsymbol{z} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$,
-    and go to Step 4
+    and go to Step 4.
 14. Calculate $\boldsymbol{v}$ and $\boldsymbol{\delta}$ using
-    $\delta_{ \mathsf{ref} }$ and $\boldsymbol{x}$
+    $\delta_{ \mathsf{ref} }$ and $\boldsymbol{x}$.
 ```
+
+Recall that the quantities
+$\widetilde{ \boldsymbol{v} }$ and $\widetilde{ \boldsymbol{\delta} }$
+are snapshot data,
+while
+$\boldsymbol{ C }$, $\boldsymbol{ Z }$, and $\boldsymbol{ d }$
+are dispatch data.
+Here $\boldsymbol{c}$ refers to the anticipated generator injections.
+The reference-bus phase angle $\delta_{ \mathsf{ref} }$ is usually set to zero.
+
+There are a few things with which we can leverage for efficiency in implementation.
+First, $\boldsymbol{z} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$ only needs to be computed once.
+Second, since the coefficient matrix $\boldsymbol{Z} \boldsymbol{Z}^{ \mathsf{T} }$ of the linear system in Step 5 is fixed,
+its Cholesky factor can be computed once and then reused in the succeeding iterations.
+Third, due to their {ref}`regular sparsity patterns <prelim:some-jacobians:jac-of-u>`,
+we can set up the data structures for $\partial_{ \boldsymbol{y} }^{ -1 } \operatorname{sigma}$ and $\boldsymbol{U}$
+once at initialization,
+and Steps 7 and 8 amount to simply updating the attributes corresponding to the nonzero elements.
