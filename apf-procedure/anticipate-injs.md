@@ -42,19 +42,19 @@ The change in total power draw is
 \end{aligned}
 ```
 
-The anticipated changes in total injections by the generators can then be approximated *naively* as
+The anticipated changes in the total generator injections can then be approximated *naively* as
 
 ```{math}
-:label: mol-change-in-c-naive
+:label: mol-change-in-sum-c-naive
 \begin{aligned}
     \Delta p_{ \mathsf{g} }
-    & =
+    & \approx
     \Delta p_{ \mathsf{d} }
     +
     \widetilde{ p }_{ \mathsf{l} }
     \, , \\
     \Delta q_{ \mathsf{g} }
-    & =
+    & \approx
     \Delta q_{ \mathsf{d} }
     +
     \widetilde{ q }_{ \mathsf{l} }
@@ -68,10 +68,10 @@ a change in total demand does not imply the same change in the required total su
 A *conservative* approach would be to at least maintain the total supply, *i.e.*,
 
 ```{math}
-:label: mol-change-in-c-conserv
+:label: mol-change-in-sum-c-conserv
 \begin{aligned}
     \Delta p_{ \mathsf{g} }
-    & =
+    & \approx
     \operatorname{ReLU} \! \left(
         \Delta p_{ \mathsf{d} }
         +
@@ -79,7 +79,7 @@ A *conservative* approach would be to at least maintain the total supply, *i.e.*
     \right)
     \, , \\
     \Delta q_{ \mathsf{g} }
-    & =
+    & \approx
     \operatorname{ReLU} \! \left(
         \Delta q_{ \mathsf{d} }
         +
@@ -91,13 +91,13 @@ A *conservative* approach would be to at least maintain the total supply, *i.e.*
 
 where
 $\operatorname{ReLU} \! \left( \cdot \right) \triangleq \max \left( 0, \cdot \right)$.
-A *strictly-increasing* flavour of {eq}`mol-change-in-c-naive` can even be used when it is certain that total demand will increase:
+A *strictly-increasing* flavour of {eq}`mol-change-in-sum-c-naive` can even be used when it is certain that total demand will increase:
 
 ```{math}
-:label: mol-change-in-c-strict
+:label: mol-change-in-sum-c-strict
 \begin{aligned}
     \Delta p_{ \mathsf{g} }
-    & =
+    & \approx
     \operatorname{ReLU} \! \left(
         \Delta p_{ \mathsf{d} }
     \right)
@@ -105,7 +105,7 @@ A *strictly-increasing* flavour of {eq}`mol-change-in-c-naive` can even be used 
     \widetilde{ p }_{ \mathsf{l} }
     \, , \\
     \Delta q_{ \mathsf{g} }
-    & =
+    & \approx
     \operatorname{ReLU} \! \left(
         \Delta q_{ \mathsf{d} }
     \right)
@@ -269,7 +269,7 @@ leaving us with
 
 We discuss the coefficient matrix in Equation {eq}`moj-change-s`
 and the matrix multiplier in Equation {eq}`moj-change-c`
-in a later subsection {ref}`apf-prc:antic-injs:moj:cal-jac`.
+in {ref}`a later subsection <apf-prc:antic-injs:moj:cal-jac>`.
 
 The "effective" approximate changes in the generator injections consist of $\Delta \boldsymbol{c}$
 and some "loss contributions" calculated by distributing
@@ -277,10 +277,10 @@ $\widetilde{ p }_{ \mathsf{l} }$ and $\widetilde{ q }_{ \mathsf{l} }$
 among the units in proportion to
 $\overline{ \boldsymbol{p} }_{ \mathsf{g} }$ and $\overline{ \boldsymbol{q} }_{ \mathsf{g} }$.
 As with {ref}`the method of Lateef<apf-prc:antic-injs:mol>`,
-the anticipated generator injections can be approximated *naively* as
+the anticipated changes in total generator injections can be approximated *naively* as
 
 ```{math}
-:label: anticipated-c-naive
+:label: anticipated-sum-c-naive
 \begin{aligned}
     \boldsymbol{p}_{ \mathsf{g} }
     & \approx
@@ -312,7 +312,7 @@ the anticipated generator injections can be approximated *naively* as
 *conservatively* as
 
 ```{math}
-:label: anticipated-c-conserv
+:label: anticipated-sum-c-conserv
 \begin{aligned}
     \boldsymbol{p}_{ \mathsf{g} }
     & \approx
@@ -348,7 +348,7 @@ the anticipated generator injections can be approximated *naively* as
 or in a *strictly increasing* manner as
 
 ```{math}
-:label: anticipated-c-strict
+:label: anticipated-sum-c-strict
 \begin{aligned}
     \boldsymbol{p}_{ \mathsf{g} }
     & \approx
