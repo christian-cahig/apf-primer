@@ -271,40 +271,25 @@ We discuss the coefficient matrix in Equation {eq}`moj-change-s`
 and the matrix multiplier in Equation {eq}`moj-change-c`
 in {ref}`a later subsection <apf-prc:antic-injs:moj:cal-jac>`.
 
-The "effective" approximate changes in the generator injections consist of $\Delta \boldsymbol{c}$
-and some "loss contributions" calculated by distributing
-$\widetilde{ p }_{ \mathsf{l} }$ and $\widetilde{ q }_{ \mathsf{l} }$
-among the units in proportion to
-$\overline{ \boldsymbol{p} }_{ \mathsf{g} }$ and $\overline{ \boldsymbol{q} }_{ \mathsf{g} }$.
-As with {ref}`the method of Lateef<apf-prc:antic-injs:mol>`,
+The "effective" approximate changes in the total generator injections will have "contributions" from $\Delta \boldsymbol{c}$ and $\widetilde{ p }_{ \mathsf{l} } + j \widetilde{ q }_{ \mathsf{l} }$.
+Let $\operatorname{ sum } \! \left( \cdot \right)$ denote the sum of all the elements in an array.
+Then, in a manner similar to {ref}`the method of Lateef<apf-prc:antic-injs:mol>`,
 the anticipated changes in total generator injections can be approximated *naively* as
 
 ```{math}
-:label: anticipated-sum-c-naive
+:label: moj-change-in-sum-c-naive
 \begin{aligned}
-    \boldsymbol{p}_{ \mathsf{g} }
+    \Delta p_{ \mathsf{g} }
     & \approx
-    \widetilde{ \boldsymbol{p} }_{ \mathsf{g} }
+    \operatorname{ sum } \! \left( \Delta \boldsymbol{p}_{ \mathsf{g} } \right)
     +
-    \Delta \boldsymbol{p}_{ \mathsf{g} }
-    +
-    \frac{ \widetilde{ p }_{ \mathsf{l} } }{
-        \boldsymbol{1}^{ \! \mathsf{T} } \, \overline{ \boldsymbol{p} }_{ \mathsf{g} }
-    }
-    \thinspace
-    \overline{\boldsymbol{p}}_{ \mathsf{g} }
+    \widetilde{ p }_{ \mathsf{l} }
     \, , \\
-    \boldsymbol{q}_{ \mathsf{g} }
+    \Delta q_{ \mathsf{g} }
     & \approx
-    \widetilde{ \boldsymbol{q} }_{ \mathsf{g} }
+    \operatorname{ sum } \! \left( \Delta \boldsymbol{q}_{ \mathsf{g} } \right)
     +
-    \Delta \boldsymbol{q}_{ \mathsf{g} }
-    +
-    \frac{ \widetilde{ q }_{ \mathsf{l} } }{
-        \boldsymbol{1}^{ \! \mathsf{T} } \, \overline{ \boldsymbol{q} }_{ \mathsf{g} }
-    }
-    \thinspace
-    \overline{\boldsymbol{q}}_{ \mathsf{g} }
+    \widetilde{ q }_{ \mathsf{l} }
     \, , \\
 \end{aligned}
 ```
@@ -312,34 +297,22 @@ the anticipated changes in total generator injections can be approximated *naive
 *conservatively* as
 
 ```{math}
-:label: anticipated-sum-c-conserv
+:label: moj-change-in-sum-c-conserv
 \begin{aligned}
-    \boldsymbol{p}_{ \mathsf{g} }
+    \Delta p_{ \mathsf{g} }
     & \approx
-    \widetilde{ \boldsymbol{p} }_{ \mathsf{g} }
-    +
     \operatorname{ ReLU } \! \left(
-        \Delta \boldsymbol{p}_{ \mathsf{g} }
+        \operatorname{ sum } \! \left( \Delta \boldsymbol{p}_{ \mathsf{g} } \right)
         +
-        \frac{ \widetilde{ p }_{ \mathsf{l} } }{
-            \boldsymbol{1}^{ \! \mathsf{T} } \, \overline{ \boldsymbol{p} }_{ \mathsf{g} }
-        }
-        \thinspace
-        \overline{\boldsymbol{p}}_{ \mathsf{g} }
+        \widetilde{ p }_{ \mathsf{l} }
     \right)
     \, , \\
-    \boldsymbol{q}_{ \mathsf{g} }
+    \Delta q_{ \mathsf{g} }
     & \approx
-    \widetilde{ \boldsymbol{q} }_{ \mathsf{g} }
-    +
     \operatorname{ ReLU } \! \left(
-        \Delta \boldsymbol{q}_{ \mathsf{g} }
+        \operatorname{ sum } \! \left( \Delta \boldsymbol{q}_{ \mathsf{g} } \right)
         +
-        \frac{ \widetilde{ q }_{ \mathsf{l} } }{
-            \boldsymbol{1}^{ \! \mathsf{T} } \, \overline{ \boldsymbol{q} }_{ \mathsf{g} }
-        }
-        \thinspace
-        \overline{\boldsymbol{q}}_{ \mathsf{g} }
+        \widetilde{ q }_{ \mathsf{l} }
     \right)
     \, , \\
 \end{aligned}
@@ -348,41 +321,54 @@ the anticipated changes in total generator injections can be approximated *naive
 or in a *strictly increasing* manner as
 
 ```{math}
-:label: anticipated-sum-c-strict
+:label: moj-change-in-sum-c-strict
 \begin{aligned}
-    \boldsymbol{p}_{ \mathsf{g} }
+    \Delta p_{ \mathsf{g} }
     & \approx
-    \widetilde{ \boldsymbol{p} }_{ \mathsf{g} }
-    +
     \operatorname{ ReLU } \! \left(
-        \Delta \boldsymbol{p}_{ \mathsf{g} }
+        \operatorname{ sum } \! \left( \Delta \boldsymbol{p}_{ \mathsf{g} } \right)
     \right)
     +
-    \frac{ \widetilde{ p }_{ \mathsf{l} } }{
-        \boldsymbol{1}^{ \! \mathsf{T} } \, \overline{ \boldsymbol{p} }_{ \mathsf{g} }
-    }
-    \thinspace
-    \overline{\boldsymbol{p}}_{ \mathsf{g} }
+    \widetilde{ p }_{ \mathsf{l} }
     \, , \\
-    \boldsymbol{q}_{ \mathsf{g} }
+    \Delta q_{ \mathsf{g} }
     & \approx
-    \widetilde{ \boldsymbol{q} }_{ \mathsf{g} }
-    +
     \operatorname{ ReLU } \! \left(
-        \Delta \boldsymbol{q}_{ \mathsf{g} }
+        \operatorname{ sum } \! \left( \Delta \boldsymbol{q}_{ \mathsf{g} } \right)
     \right)
     +
-    \frac{ \widetilde{ q }_{ \mathsf{l} } }{
-        \boldsymbol{1}^{ \! \mathsf{T} } \, \overline{ \boldsymbol{q} }_{ \mathsf{g} }
-    }
-    \thinspace
-    \overline{\boldsymbol{q}}_{ \mathsf{g} }
+    \widetilde{ q }_{ \mathsf{l} }
     \, , \\
 \end{aligned}
 ```
 
 where $\Delta \boldsymbol{p}_{ \mathsf{g} }$ and $\Delta \boldsymbol{q}_{ \mathsf{g} }$
-are subvectors of $\Delta \boldsymbol{c}$ (per Equation {eq}`pg-qg-2-c`).
+are subvectors of $\Delta \boldsymbol{c}$ {eq}`pg-qg-2-c`.
+Then the anticipated control variables are calculated as
+
+```{margin}
+Although the last steps in the methods of Lateef and of Jacobians have the same notational forms
+(compare {eq}`mol-anticipated-c` and {eq}`moj-anticipated-c`),
+they have fundamentally different approaches to calculating $\Delta p_{ \mathsf{g} }$ and $\Delta q_{ \mathsf{g} }$ .
+```
+
+```{math}
+:label: moj-anticipated-c
+\begin{aligned}
+    \boldsymbol{p}_{ \mathsf{g} }
+    & \approx
+    \frac{ \widetilde{ p }_{ \mathsf{g} } + \Delta p_{ \mathsf{g} } }{ \overline{ p }_{g} }
+    \thinspace
+    \overline{\boldsymbol{p}}_{ \mathsf{g} }
+    \, , \\
+    \boldsymbol{q}_{ \mathsf{g} }
+    & \approx
+    \frac{ \widetilde{ q }_{ \mathsf{g} } + \Delta q_{ \mathsf{g} } }{ \overline{ q }_{g} }
+    \thinspace
+    \overline{\boldsymbol{q}}_{ \mathsf{g} }
+    \, .
+\end{aligned}
+```
 
 (apf-prc:antic-injs:moj:cal-jac)=
 ### Calculating the Jacobians
