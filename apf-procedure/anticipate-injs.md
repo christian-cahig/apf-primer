@@ -351,12 +351,6 @@ where $\Delta \boldsymbol{p}_{ \mathsf{g} }$ and $\Delta \boldsymbol{q}_{ \maths
 are subvectors of $\Delta \boldsymbol{c}$ {eq}`pg-qg-2-c`.
 Then the anticipated control variables are calculated as
 
-```{margin}
-Although the last steps in the methods of Lateef and of Jacobians have the same notational forms
-(compare {eq}`mol-anticipated-c` and {eq}`moj-anticipated-c`),
-they have fundamentally different approaches to calculating $\Delta p_{ \mathsf{g} }$ and $\Delta q_{ \mathsf{g} }$ .
-```
-
 ```{math}
 :label: moj-anticipated-c
 \begin{aligned}
