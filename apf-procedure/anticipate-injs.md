@@ -22,6 +22,10 @@ and
 scheduled bounds on generator injections,
 $\overline{ \boldsymbol{p} }_{ \mathsf{g} } + j \overline{ \boldsymbol{q} }_{ \mathsf{g} }$ .
 
+Define
+$p_{ \mathsf{d} } + j q_{ \mathsf{d} } \triangleq \boldsymbol{1}^{ \! \mathsf{T} } \! \left( \boldsymbol{p}_{ \mathsf{d} } + j \boldsymbol{q}_{ \mathsf{d} } \right)$
+and
+$\widetilde{ p }_{ \mathsf{g} } + j \widetilde{ q }_{ \mathsf{g} } \triangleq \boldsymbol{1}^{ \! \mathsf{T} } \! \left( \widetilde{ \boldsymbol{p} }_{ \mathsf{g} } + j \widetilde{ \boldsymbol{q} }_{ \mathsf{g} } \right)$ .
 The change in total power draw is
 
 ```{math}
@@ -29,25 +33,16 @@ The change in total power draw is
 \begin{aligned}
     \Delta p_{ \mathsf{d} }
     & =
-    \boldsymbol{1}^{ \! \mathsf{T} } \boldsymbol{p}_{ \mathsf{d} }
-    -
-    \boldsymbol{1}^{ \! \mathsf{T} } \widetilde{ \boldsymbol{p} }_{ \mathsf{g} }
-    +
-    \widetilde{ p }_{ \mathsf{l} }
+    p_{ \mathsf{d} } - \widetilde{ p }_{ \mathsf{g} } + \widetilde{ p }_{ \mathsf{l} }
     \, , \\
     \Delta q_{ \mathsf{d} }
     & =
-    \boldsymbol{1}^{ \! \mathsf{T} } \boldsymbol{q}_{ \mathsf{d} }
-    -
-    \boldsymbol{1}^{ \! \mathsf{T} } \widetilde{ \boldsymbol{q} }_{ \mathsf{g} }
-    +
-    \widetilde{ q }_{ \mathsf{l} }
-    \, ,
+    q_{ \mathsf{d} } - \widetilde{ q }_{ \mathsf{g} } + \widetilde{ q }_{ \mathsf{l} }
+    \, .
 \end{aligned}
 ```
 
-where the $\boldsymbol{1}$'s are vectors of ones appropriately sized so that the right-hand side expressions evaluate to scalars.
-The anticiapted changes in total injections by the generators can then be approximated *naively* as
+The anticipated changes in total injections by the generators can then be approximated *naively* as
 
 ```{math}
 :label: mol-change-in-c-naive
@@ -120,45 +115,32 @@ A *strictly-increasing* flavour of {eq}`mol-change-in-c-naive` can even be used 
 \end{aligned}
 ```
 
-The quantities
-$\Delta p_{ \mathsf{g} }$ and $\Delta q_{ \mathsf{g} }$
-are distributed among the generator units in proportion to the scheduled upper bounds on their injections.
-This yields the approximate changes for the injections of the individual units,
-so that the anticipated control variables are given by
+Let $\overline{ \boldsymbol{p} }_{ \mathsf{g} }, \overline{ \boldsymbol{q} }_{ \mathsf{g} } \in \mathbb{R}^{G}$ be the scheduled upper bounds on the generator injections,
+with $\overline{ p }_{ \mathsf{g}, i }$ and $\overline{ q }_{ \mathsf{g}, i }$ being the bounds for unit $i$;
+define $\overline{ p }_{g} = \sum \overline{ p }_{ \mathsf{g}, i }$ and $\overline{ q }_{g} = \sum \overline{ q }_{ \mathsf{g}, i }$ as the sums of the bounds.
+Then the anticipated control variables are calculated as
 
 ```{math}
 :label: mol-anticipated-c
 \begin{aligned}
     \boldsymbol{p}_{ \mathsf{g} }
     & \approx
-    \widetilde{ \boldsymbol{p} }_{ \mathsf{g} }
-    +
-    \frac{ \Delta p_{ \mathsf{g} } }{
-        \boldsymbol{1}^{ \! \mathsf{T} } \, \overline{ \boldsymbol{p} }_{ \mathsf{g} }
-    }
+    \frac{ \widetilde{ p }_{ \mathsf{g} } + \Delta p_{ \mathsf{g} } }{ \overline{ p }_{g} }
     \thinspace
     \overline{\boldsymbol{p}}_{ \mathsf{g} }
     \, , \\
     \boldsymbol{q}_{ \mathsf{g} }
     & \approx
-    \widetilde{ \boldsymbol{q} }_{ \mathsf{g} }
-    +
-    \frac{ \Delta p_{ \mathsf{g} } }{
-        \boldsymbol{1}^{ \! \mathsf{T} } \, \overline{ \boldsymbol{q} }_{ \mathsf{g} }
-    }
+    \frac{ \widetilde{ q }_{ \mathsf{g} } + \Delta q_{ \mathsf{g} } }{ \overline{ q }_{g} }
     \thinspace
     \overline{\boldsymbol{q}}_{ \mathsf{g} }
     \, . 
 \end{aligned}
 ```
 
-Equation
-{eq}`mol-change-total-d`
-and the additive term in Equation
-{eq}`mol-change-total-d`
+Equation {eq}`mol-change-total-d` and the "distributing among the generator units in proportion to their scheduled capacities" in Equation {eq}`mol-anticipated-c`
 are based on the experimental setup detailed in Section 2.4 of Omer Lateef's dissertation,
 [*Measurement-Based Parameter Estimation and Analysis of Power System*](http://hdl.handle.net/1853/63600).
-This explains the name given to the method.
 
 (apf-prc:antic-injs:moj)=
 ## The method of Jacobians
