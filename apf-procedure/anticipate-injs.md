@@ -377,7 +377,7 @@ Then the anticipated control variables are calculated as
 \end{aligned}
 ```
 
-To calcualte the Jacobian of $\boldsymbol{s}$ w.r.t. $\boldsymbol{d}^{ \prime }$,
+To calculate the Jacobian of $\boldsymbol{s}$ w.r.t. $\boldsymbol{d}^{ \prime }$,
 we can take the former to be an implicitly defined function solely of the latter
 through the power flow equations, and invoke the implicit function theorem.
 Evaluating this at the snapshot measurements, we have the linear matrix equation
