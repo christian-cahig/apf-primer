@@ -1,11 +1,7 @@
 (apf-prc:antic-injs)=
 # Anticipating generator injections
 
-We describe two methods for accomplishing the first stage of the APF procedure.
-One method is a simple algebraic procedure that calculates a change in total generator injection,
-and distributes such aggregate change among the individual units according to their scheduled bounds.
-The other method is more involved as it involves computing first-order information to approximate sensitivities.
-
+We describe three methods for accomplishing the first stage of the APF procedure.
 In the following, we use $\operatorname{ReLU} \! \left( \cdot \right)$ as the shorthand for the operation $\max \left( 0, \cdot \right)$ .
 To avoid explicit summations and multiplying by $\boldsymbol{1}^{ \! \mathsf{T} }$,
 we use $\operatorname{sum} \! \left( \cdot \right)$ to denote the sum of all the elements in an array.
@@ -26,10 +22,6 @@ and
 scheduled bounds on generator injections,
 $\overline{ \boldsymbol{p} }_{ \mathsf{g} } + j \overline{ \boldsymbol{q} }_{ \mathsf{g} }$ .
 
-Define
-$p_{ \mathsf{d} } + j q_{ \mathsf{d} } \triangleq \boldsymbol{1}^{ \! \mathsf{T} } \! \left( \boldsymbol{p}_{ \mathsf{d} } + j \boldsymbol{q}_{ \mathsf{d} } \right)$
-and
-$\widetilde{ p }_{ \mathsf{g} } + j \widetilde{ q }_{ \mathsf{g} } \triangleq \boldsymbol{1}^{ \! \mathsf{T} } \! \left( \widetilde{ \boldsymbol{p} }_{ \mathsf{g} } + j \widetilde{ \boldsymbol{q} }_{ \mathsf{g} } \right)$ .
 The change in total power draw is
 
 ```{math}
@@ -37,11 +29,19 @@ The change in total power draw is
 \begin{aligned}
     \Delta p_{ \mathsf{d} }
     & =
-    p_{ \mathsf{d} } - \widetilde{ p }_{ \mathsf{g} } + \widetilde{ p }_{ \mathsf{l} }
+    \operatorname{sum} \! \left( \boldsymbol{p}_{ \mathsf{d} } \right)
+    -
+    \operatorname{sum} \! \left( \widetilde{ \boldsymbol{p} }_{ \mathsf{g} } \right)
+    +
+    \widetilde{ p }_{ \mathsf{l} }
     \, , \\
     \Delta q_{ \mathsf{d} }
     & =
-    q_{ \mathsf{d} } - \widetilde{ q }_{ \mathsf{g} } + \widetilde{ q }_{ \mathsf{l} }
+    \operatorname{sum} \! \left( \boldsymbol{q}_{ \mathsf{d} } \right)
+    -
+    \operatorname{sum} \! \left( \widetilde{ \boldsymbol{q} }_{ \mathsf{g} } \right)
+    +
+    \widetilde{ q }_{ \mathsf{l} }
     \, .
 \end{aligned}
 ```
@@ -117,7 +117,6 @@ A *strictly-increasing* flavour of {eq}`mol-change-in-sum-c-naive` can even be u
 \end{aligned}
 ```
 
-Let $\overline{ \boldsymbol{p} }_{ \mathsf{g} }, \overline{ \boldsymbol{q} }_{ \mathsf{g} } \in \mathbb{R}^{G}$ be the scheduled upper bounds on the generator injections.
 Then the anticipated control variables are calculated as
 
 ```{math}
@@ -126,7 +125,9 @@ Then the anticipated control variables are calculated as
     \boldsymbol{p}_{ \mathsf{g} }
     & \approx
     \frac{ 
-        \widetilde{ p }_{ \mathsf{g} } + \Delta p_{ \mathsf{g} }
+        \operatorname{sum} \! \left( \widetilde{ \boldsymbol{p} }_{ \mathsf{g} } \right)
+        +
+        \Delta p_{ \mathsf{g} }
     }{
         \operatorname{sum} \! \left( \overline{ \boldsymbol{p} }_{ \mathsf{g} } \right)
     }
@@ -136,7 +137,9 @@ Then the anticipated control variables are calculated as
     \boldsymbol{q}_{ \mathsf{g} }
     & \approx
     \frac{
-        \widetilde{ q }_{ \mathsf{g} } + \Delta q_{ \mathsf{g} }
+        \operatorname{sum} \! \left( \widetilde{ \boldsymbol{q} }_{ \mathsf{g} } \right)
+        +
+        \Delta q_{ \mathsf{g} }
     }{
         \operatorname{sum} \! \left( \overline{ \boldsymbol{q} }_{ \mathsf{g} } \right)
     }
@@ -357,7 +360,9 @@ Then the anticipated control variables are calculated as
     \boldsymbol{p}_{ \mathsf{g} }
     & \approx
     \frac{ 
-        \widetilde{ p }_{ \mathsf{g} } + \Delta p_{ \mathsf{g} }
+        \operatorname{sum} \! \left( \widetilde{ \boldsymbol{p} }_{ \mathsf{g} } \right)
+        +
+        \Delta p_{ \mathsf{g} }
     }{
         \operatorname{sum} \! \left( \overline{ \boldsymbol{p} }_{ \mathsf{g} } \right)
     }
@@ -367,13 +372,15 @@ Then the anticipated control variables are calculated as
     \boldsymbol{q}_{ \mathsf{g} }
     & \approx
     \frac{
-        \widetilde{ q }_{ \mathsf{g} } + \Delta q_{ \mathsf{g} }
+        \operatorname{sum} \! \left( \widetilde{ \boldsymbol{q} }_{ \mathsf{g} } \right)
+        +
+        \Delta q_{ \mathsf{g} }
     }{
         \operatorname{sum} \! \left( \overline{ \boldsymbol{q} }_{ \mathsf{g} } \right)
     }
     \thinspace
     \overline{\boldsymbol{q}}_{ \mathsf{g} }
-    \, .
+    \, . 
 \end{aligned}
 ```
 
@@ -505,7 +512,7 @@ p_{ \mathsf{g} }
 ```
 
 where $\operatorname{sum} \! \left( \cdot \right)$ denotes the power factor of some complex power quantity.
-Then the anticipated reactive injections are estimated as Equation {eq}`pfm-anticipated-pg`:
+Then the anticipated reactive injections are estimated as
 
 ```{math}
 :label: pfm-anticipated-qg
