@@ -508,10 +508,18 @@ p_{ \mathsf{g} }
         + j \widetilde{ \boldsymbol{q} }_{ \mathsf{g} }
     \right)
 \right) \right) \right)
+=
+\frac{
+    \operatorname{sum} \! \left( \widetilde{ \boldsymbol{q} }_{ \mathsf{g} } \right)
+}{
+    \operatorname{sum} \! \left( \widetilde{ \boldsymbol{p} }_{ \mathsf{g} } \right)
+}
+\thinspace
+p_{ \mathsf{g} }
 \, ,
 ```
 
-where $\operatorname{sum} \! \left( \cdot \right)$ denotes the power factor of some complex power quantity.
+where $\operatorname{pf} \! \left( \cdot \right)$ denotes the power factor of some complex power quantity.
 Then the anticipated reactive injections are estimated as
 
 ```{math}
