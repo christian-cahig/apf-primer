@@ -5,7 +5,7 @@ We assume that there is a consistent roster of buses.
 For an arbitrary $N$-element sequence of quantities corresponding to the buses,
 the entries are partitioned such that
 the first $N_{ \mathsf{s} }$ elements correspond to the SR bus,
-the neext $N_{ \mathsf{v} }$ to the PV buses,
+the next $N_{ \mathsf{v} }$ to the PV buses,
 and
 the last $N_{ \mathsf{q} }$ to the PQ buses.
 The following examples illustrate this.
