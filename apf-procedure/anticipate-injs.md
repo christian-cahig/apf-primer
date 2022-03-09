@@ -465,3 +465,56 @@ $$ (Jac-s-wrt-c)
 from which we solve for
 $\partial_{ \boldsymbol{c} } \boldsymbol{s} \! \left( \widetilde{ \boldsymbol{s} } \right)$,
 whose transpose is the multiplier for $\Delta \boldsymbol{s}$ in Equation {eq}`moj-change-c`.
+
+(apf-prc:antic-injs:pfm)=
+## The power factor method
+
+Consider the case where a projected value of the total active generation,
+$p_{ \mathsf{g} }$ , is avaialble (*e.g.*, by a scheduling routine).
+The anticipated active injections can be estimated by distributing $p_{ \mathsf{g} }$
+among the generator units in proportion to the units' scheduled limits,
+*i.e.*,
+
+```{math}
+:label: pfm-anticipated-pg
+\boldsymbol{p}_{ \mathsf{g} }
+\approx
+\frac{ p_{ \mathsf{g} } }{
+    \operatorname{sum} \! \left( \overline{ \boldsymbol{p} }_{ \mathsf{g} } \right)
+}
+\thinspace
+\overline{\boldsymbol{p}}_{ \mathsf{g} }
+\, .
+```
+
+The anticipated total reactive generation $q_{ \mathsf{g} }$ is estimated with the use of
+the aggregate power factor at the previous snapshot, *i.e.*,
+
+```{math}
+:label: pfm-anticipated-qg-sum
+q_{ \mathsf{g} }
+\approx
+p_{ \mathsf{g} }
+\tan \! \left( \operatorname{ arccos } \! \left( \operatorname{pf} \! \left(
+    \operatorname{sum} \! \left(
+        \widetilde{ \boldsymbol{p} }_{ \mathsf{g} }
+        + j \widetilde{ \boldsymbol{q} }_{ \mathsf{g} }
+    \right)
+\right) \right) \right)
+\, ,
+```
+
+where $\operatorname{sum} \! \left( \cdot \right)$ denotes the power factor of some complex power quantity.
+Then the anticipated reactive injections are estimated as Equation {eq}`pfm-anticipated-pg`:
+
+```{math}
+:label: pfm-anticipated-qg
+\boldsymbol{q}_{ \mathsf{g} }
+\approx
+\frac{ q_{ \mathsf{g} } }{
+    \operatorname{sum} \! \left( \overline{ \boldsymbol{q} }_{ \mathsf{g} } \right)
+}
+\thinspace
+\overline{\boldsymbol{q}}_{ \mathsf{g} }
+\, .
+```
