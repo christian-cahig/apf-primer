@@ -38,9 +38,9 @@ and to
 $\boldsymbol{B}$,
 respectively, but with zero diagonals.
 Define
-$\boldsymbol{A}_{ \mathsf{d} } = \boldsymbol{C}_{ \mathsf{f} }^{ \mathsf{T} } - \boldsymbol{C}_{ \mathsf{t} }^{ \mathsf{T} }$
+$\boldsymbol{A}_{ \mathsf{d} }$ as the transpose of $\boldsymbol{C}_{ \mathsf{ft} }^{ - }$,
 and
-$\boldsymbol{A}_{ \mathsf{u} } = \boldsymbol{C}_{ \mathsf{f} }^{ \mathsf{T} } + \boldsymbol{C}_{ \mathsf{t} }^{ \mathsf{T} }$.
+$\boldsymbol{A}_{ \mathsf{u} }$ of $\boldsymbol{C}_{ \mathsf{ft} }^{ + }$.
 Let
 $\odot$
 denote elementwise matrix multiplication,
@@ -118,6 +118,9 @@ $$
 \, .
 $$ (getting-Z)
 
+We reserve the variable names `E` and `Z` for $\boldsymbol{E}$ and for $\boldsymbol{Z}$, respectively.
+
+<!--
 Formally,
 $\boldsymbol{E}$
 is the coefficient of the linear dependence of
@@ -139,4 +142,4 @@ on
 $\boldsymbol{y}$,
 *i.e.*,
 $\boldsymbol{z} = \boldsymbol{Z} \boldsymbol{y}$.
-We reserve the variable names `E` and `Z` for $\boldsymbol{E}$ and for $\boldsymbol{Z}$, respectively.
+-->
