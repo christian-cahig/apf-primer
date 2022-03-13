@@ -136,7 +136,23 @@ $$
 \, .
 $$ (C-step-2)
 
-We use `C` as the dedicated variable name for $\boldsymbol{C}$.
+The *reduced augmented branch-to-bus incidence matrix* $\boldsymbol{W}$ is a submatrix of $\boldsymbol{C}$
+formed by removing from the latter the $\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s} } \right)$-th columns:
+
+$$
+\boldsymbol{W}
+=
+\left[ \begin{matrix}
+    \boldsymbol{C}_{ : ,\, 1:N }
+    &
+    \boldsymbol{C}_{ : ,\, N + N_{ \mathsf{s} } + 1 : }
+    \, \\
+\end{matrix} \right]
+\in \mathbb{R}^{ \left( N + 2E \right) \times \left( 2N - N_{ \mathsf{s} } \right) }
+\, .
+$$
+
+In code, we use `C` and `W` for $\boldsymbol{C}$ and for $\boldsymbol{W}$, respectively.
 
 <!-- 
 Formally,
