@@ -143,7 +143,7 @@ Formally,
 {ref}`the sigma transform of the canonicalized state vector <prelim:state-vars:y-u>`
 $\boldsymbol{u}$
 is related to
-{ref}`the intermediate state vector <prelim:state-vars:x>`
+{ref}`the full intermediate state vector <prelim:state-vars:interm>`
 $\boldsymbol{x}$
 as
 $\boldsymbol{u} = \boldsymbol{C} \boldsymbol{x}$.
