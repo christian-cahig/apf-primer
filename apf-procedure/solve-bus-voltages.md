@@ -13,14 +13,14 @@ $$
     & =
     \boldsymbol{z} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)
     \\
-    \boldsymbol{C} \boldsymbol{x} & = \operatorname{ sigma } \! \left( \boldsymbol{y} \right)
+    \boldsymbol{W} \boldsymbol{w} & = \operatorname{ sigma } \! \left( \boldsymbol{y} \right)
 \end{aligned} \right.
 \, ,
 $$ (pf-eqns-fac-reduced)
 
 we solve for the corresponding system state variables $\boldsymbol{v}$ and $\boldsymbol{\delta}$
 via the *factored Newton-Raphson*,
-a method which was earlier introduced in
+a method which was introduced in prior works
 [*Factorized Load Flow*](https://doi.org/10.1109/TPWRS.2013.2265298)
 and
 [*Factored solution of nonlinear equation systems*](https://doi.org/10.1098/rspa.2014.0236).
@@ -32,7 +32,7 @@ The process is summarized in {prf:ref}`alg-solve-for-s`.
 **Inputs**
 $\widetilde{ \boldsymbol{v} }$, $\widetilde{ \boldsymbol{\delta} }$,
 $\boldsymbol{d}$, $\boldsymbol{c}$,
-$\boldsymbol{C}$, $\boldsymbol{Z}$,
+$\boldsymbol{W}$, $\boldsymbol{Z}$,
 $\delta_{ \mathsf{ref} }$,
 $\epsilon > 0$
 
@@ -48,49 +48,49 @@ $\boldsymbol{v}$ and $\boldsymbol{\delta}$
 6. $\widehat{ \boldsymbol{y} } \gets \boldsymbol{y} - \boldsymbol{Z}^{ \mathsf{T} } \widehat{ \boldsymbol{\mu} }$
 7. Calculate $\partial_{ \boldsymbol{y} }^{ -1 } \operatorname{sigma} \! \left( \widehat{ \boldsymbol{y} } \right)$.
 8. Calculate $\boldsymbol{U} \! \left( \widehat{ \boldsymbol{y} } \right)$.
-9. $\boldsymbol{M} \gets \boldsymbol{C}^{ \mathsf{T} } \boldsymbol{U} \! \left( \widehat{ \boldsymbol{y} } \right)$,
+9. $\boldsymbol{M} \gets \boldsymbol{W}^{ \mathsf{T} } \thinspace \boldsymbol{U} \! \left( \widehat{ \boldsymbol{y} } \right)$,
    $\boldsymbol{N} \gets \boldsymbol{Z} \, \partial_{ \boldsymbol{y} }^{ -1 } \operatorname{sigma} \! \left( \widehat{ \boldsymbol{y} } \right)$,
-   $\boldsymbol{H} \gets \boldsymbol{N} \boldsymbol{C}$,
+   $\boldsymbol{H} \gets \boldsymbol{N} \boldsymbol{W}$,
    $\widehat{ \boldsymbol{u} } \gets \operatorname{sigma} \! \left( \widehat{ \boldsymbol{y} } \right)$
-10. Solve for $\boldsymbol{w}$ in
+10. Solve for $\boldsymbol{m}$ in
 
     $$
-        \left[ \begin{matrix}
-            \boldsymbol{M} \boldsymbol{C} & \boldsymbol{H}^{ \mathsf{T} } \, \\
-            \boldsymbol{H} & \boldsymbol{0} \,
-        \end{matrix} \right]
-        \left[ \begin{matrix}
-            \boldsymbol{x} \\
-            \boldsymbol{\mu}
-        \end{matrix} \right]
-        =
-        \left[ \begin{matrix}
-            \boldsymbol{M} \boldsymbol{C} & \boldsymbol{H}^{ \mathsf{T} } \, \\
-            \boldsymbol{H} & \boldsymbol{0} \,
-        \end{matrix} \right]
-        \boldsymbol{w}
-        =
-        \left[ \begin{matrix}
-            \boldsymbol{M} \widehat{ \boldsymbol{u} } + \boldsymbol{H}^{ \mathsf{T} } \widehat{ \boldsymbol{\mu} }
-            \, \\
-            \boldsymbol{N} \widehat{ \boldsymbol{u} } \,
-        \end{matrix} \right]
-        .
+    \left[ \begin{matrix}
+        \boldsymbol{M} \boldsymbol{W} & \boldsymbol{H}^{ \mathsf{T} } \, \\
+        \boldsymbol{H} & \boldsymbol{0} \,
+    \end{matrix} \right]
+    \left[ \begin{matrix}
+        \boldsymbol{w} \\
+        \boldsymbol{\mu}
+    \end{matrix} \right]
+    =
+    \left[ \begin{matrix}
+        \boldsymbol{M} \boldsymbol{W} & \boldsymbol{H}^{ \mathsf{T} } \, \\
+        \boldsymbol{H} & \boldsymbol{0} \,
+    \end{matrix} \right]
+    \boldsymbol{m}
+    =
+    \left[ \begin{matrix}
+        \boldsymbol{M} \widehat{ \boldsymbol{u} } + \boldsymbol{H}^{ \mathsf{T} } \widehat{ \boldsymbol{\mu} }
+        \, \\
+        \boldsymbol{N} \widehat{ \boldsymbol{u} } \,
+    \end{matrix} \right]
+    .
     $$
 
-11. Get $\boldsymbol{x}$ from $\boldsymbol{w}$.
-12. $\boldsymbol{y} \gets \operatorname{arcsigma} \! \left( \boldsymbol{C} \boldsymbol{x} \right)$
+11. Get $\boldsymbol{w}$ from $\boldsymbol{m}$.
+12. $\boldsymbol{y} \gets \operatorname{arcsigma} \! \left( \boldsymbol{W} \boldsymbol{w} \right)$
 13. $\boldsymbol{\psi} \gets \boldsymbol{Z} \boldsymbol{y} - \boldsymbol{z} \! \left( \boldsymbol{c}, \boldsymbol{d} \right)$,
     and go to Step 4.
 14. Calculate $\boldsymbol{v}$ and $\boldsymbol{\delta}$ using
-    $\delta_{ \mathsf{ref} }$ and $\boldsymbol{x}$.
+    $\delta_{ \mathsf{ref} }$ and $\boldsymbol{w}$.
 ```
 
 Recall that the quantities
 $\widetilde{ \boldsymbol{v} }$ and $\widetilde{ \boldsymbol{\delta} }$
 are snapshot data,
 while
-$\boldsymbol{ C }$, $\boldsymbol{ Z }$, and $\boldsymbol{ d }$
+$\boldsymbol{ W }$, $\boldsymbol{ Z }$, and $\boldsymbol{ d }$
 are dispatch data.
 Here $\boldsymbol{c}$ refers to the anticipated generator injections.
 The reference-bus phase angle $\delta_{ \mathsf{ref} }$ is usually set to zero.
