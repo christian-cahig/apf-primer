@@ -52,14 +52,14 @@ $$ (a)
 Let $\mathsf{f}$ and $\mathsf{t}$ be used as subscripts
 to denote quantities at the from- and at the to-side buses, respectively, of the branches.
 Then we have the $E$-vectors
-$\boldsymbol{v}_{ \mathsf{f} } = \boldsymbol{C}_{ \mathsf{f} } \boldsymbol{v}$
+$\boldsymbol{v}_{ \mathsf{f} } = \boldsymbol{C}_{ \mathsf{f} } \, \boldsymbol{v}$
 and
-$\boldsymbol{\delta}_{ \mathsf{f} } = \boldsymbol{C}_{ \mathsf{f} } \boldsymbol{\delta}$
+$\boldsymbol{\delta}_{ \mathsf{f} } = \boldsymbol{C}_{ \mathsf{f} } \, \boldsymbol{\delta}$
 for the sending,
 and
-$\boldsymbol{v}_{ \mathsf{t} } = \boldsymbol{C}_{ \mathsf{t} } \boldsymbol{v}$
+$\boldsymbol{v}_{ \mathsf{t} } = \boldsymbol{C}_{ \mathsf{t} } \, \boldsymbol{v}$
 and
-$\boldsymbol{\delta}_{ \mathsf{t} } = \boldsymbol{C}_{ \mathsf{t} } \boldsymbol{\delta}$
+$\boldsymbol{\delta}_{ \mathsf{t} } = \boldsymbol{C}_{ \mathsf{t} } \, \boldsymbol{\delta}$
 for the receiving ends.
 We can then define the $E$-vectors
 $\boldsymbol{k}$ and $\boldsymbol{r}$
@@ -105,9 +105,9 @@ $$ (alp)
 where $\ln \! \left( \cdot \right)$ applies componentwise.
 As with $\boldsymbol{v}_{ \mathsf{f} }$ and $\boldsymbol{v}_{ \mathsf{t} }$,
 we have the $E$-vectors
-$\boldsymbol{\alpha}_{ \mathsf{f} } = \boldsymbol{C}_{ \mathsf{f} }\boldsymbol{\alpha}$
+$\boldsymbol{\alpha}_{ \mathsf{f} } = \boldsymbol{C}_{ \mathsf{f} } \, \boldsymbol{\alpha}$
 and
-$\boldsymbol{\alpha}_{ \mathsf{t} } = \boldsymbol{C}_{ \mathsf{t} }\boldsymbol{\alpha}$.
+$\boldsymbol{\alpha}_{ \mathsf{t} } = \boldsymbol{C}_{ \mathsf{t} } \, \boldsymbol{\alpha}$.
 We can then define the $E$-vectors
 $\boldsymbol{\kappa}$ and $\boldsymbol{\rho}$
 as
@@ -130,16 +130,26 @@ We use `alp`, `kap`, and `rho`
 as the respective variable names for
 $\boldsymbol{\alpha}$, $\boldsymbol{\kappa}$, and $\boldsymbol{\rho}$.
 
-(prelim:state-vars:x)=
-## Intermediate state vector
+(prelim:state-vars:interm)=
+## Intermediate state variables
 
-We define *intermediate state vector* as the concatenation of
-$\boldsymbol{\alpha}$
-and the bus voltage phase angles at the non-reference buses,
-*i.e.*,
+We define the *full intermediate state vector* as the concatenation of $\boldsymbol{\alpha}$ and $\boldsymbol{\delta}$ , *i.e.*,
 
 $$
 \boldsymbol{x}
+=
+\left[ \begin{matrix}
+    \boldsymbol{\alpha} \\
+    \boldsymbol{\delta}
+\end{matrix} \right]
+\in \mathbb{R}^{ 2N }
+\, .
+$$ (x)
+
+The *reduced intermediate state vector* is similarly constructed, except that only the phase angles at the non-reference buses are used, *i.e.*,
+
+$$
+\boldsymbol{w}
 =
 \left[ \begin{matrix}
     \boldsymbol{\alpha} \, \\
@@ -147,9 +157,11 @@ $$
     \boldsymbol{\delta}_{ \mathsf{q} } \, \\
 \end{matrix} \right]
 \in \mathbb{R}^{ 2N - N_{ \mathsf{s} } }
-$$ (x)
+\, ,
+$$ (w)
 
-with `x` as the dedicated variable name.
+following {ref}`the partitioning scheme <prelim:bus-indexing:vecs-n>` for $N$-vectors.
+In code, we use `x` and `w` exclusively to refer to $\boldsymbol{x}$ and to $\boldsymbol{w}$, respectively.
 
 (prelim:state-vars:y-u)=
 ## Canonicalized state vector and its sigma transform
@@ -181,6 +193,7 @@ $$
     r_{E}           \, \\
 \end{matrix} \right]
 \in \mathbb{R}^{ N + 2E }
+\, ,
 $$ (y)
 
 with `y` as the exclusive variable name.
@@ -207,6 +220,7 @@ $$
     \rho_{E}            \, \\
 \end{matrix} \right]
 \in \mathbb{R}^{ N + 2E }
+\, ,
 $$ (u)
 
 with `u` as the reserved variable name.

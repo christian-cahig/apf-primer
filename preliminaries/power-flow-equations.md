@@ -78,8 +78,7 @@ $$
 \, .
 $$ (pf-eqns-fac)
 
-Equation {eq}`pf-eqns-fac` is based on, but is not the same as,
-Equations (27) and (28) of
+Equation {eq}`pf-eqns-fac` is an extension of Equations (27) and (28) of
 [*Factorized Load Flow*](https://doi.org/10.1109/TPWRS.2013.2265298).
 
 (prelim:pow-flow-eqns:residuals)=

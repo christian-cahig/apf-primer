@@ -60,14 +60,37 @@ $\left[ \begin{matrix} \boldsymbol{C}_{\mathsf{d} } \\ \end{matrix} \right]_{i, 
 otherwise.
 The variable name `Cd` is reserved for $\boldsymbol{C}_{\mathsf{d} }$.
 
-(prelim:connection-mats:C)=
-## Generalized branch connection matrix
+(prelim:connection-mats:CW)=
+## Branch-to-bus incidence matrices
 
-The *generalized branch connection matrix* $\boldsymbol{C}$
-is obtained by first setting it to be
+Let
+$ \boldsymbol{C}_{ \mathsf{ft} }^{ + } $
+and
+$ \boldsymbol{C}_{ \mathsf{ft} }^{ - } $
+be the *undirected* and the *directed branch-to-bus incidence matrices*
+given by
+
+$$
+\boldsymbol{C}_{ \mathsf{ft} }^{ + }
+=
+\boldsymbol{C}_{ \mathsf{f} } + \boldsymbol{C}_{ \mathsf{t} }
+\in \mathbb{R}^{ E \times N }
+\, ,
+$$ (Cft-plus)
+
+$$
+\boldsymbol{C}_{ \mathsf{ft} }^{ - }
+=
+\boldsymbol{C}_{ \mathsf{f} } - \boldsymbol{C}_{ \mathsf{t} }
+\in \mathbb{R}^{ E \times N }
+\, ,
+$$ (Cft-minus)
+
+respectively.
+The *full augmented branch-to-bus incidence matrix* $\boldsymbol{C}$ is obtained by first setting it to be
 
 ```{margin}
-Equation {eq}`Cg-step-1` is based on Equation (45) of
+Equation {eq}`C-step-1` is an extension of Equation (45) of
 [*Bilinear Power System State Estimation*](https://doi.org/10.1109/TPWRS.2011.2162256).
 ```
 
@@ -75,22 +98,21 @@ $$
 \boldsymbol{C}
 \, \gets
 \left[ \begin{matrix}
-    \boldsymbol{I}_{N} & \boldsymbol{0}_{N ,\, N - N_{ \mathsf{s}} }                \,\,\, \\
-    \boldsymbol{C}_{ \mathsf{f} } + \boldsymbol{C}_{ \mathsf{t} }
-    & \boldsymbol{0}_{E , \, N - N_{ \mathsf{s}} }                                  \,\,\, \\
-    \boldsymbol{0}_{E , \, N}
-    &
-    \left[ \boldsymbol{C}_{ \mathsf{f} } \right]_{:, \, N_{ \mathsf{s} } + 1 :}
-    -
-    \left[ \boldsymbol{C}_{ \mathsf{t} } \right]_{:, \, N_{ \mathsf{s} } + 1 :}     \,\,\, \\
+    \boldsymbol{I}_{ N }                    &   \boldsymbol{0}_{ N ,\, N }
+    \\
+    \boldsymbol{C}_{ \mathsf{ft} }^{ + }    &   \boldsymbol{0}_{ E ,\, N }
+    \\
+    \boldsymbol{0}_{ E ,\, N }              &   \boldsymbol{C}_{ \mathsf{ft} }^{ - }
+    \\
 \end{matrix} \right]
-\in \mathbb{R}^{ \left( N + 2E \right) \times \left( 2N - N_{ \mathsf{s} } \right) }
-$$ (Cg-step-1)
+\in \mathbb{R}^{ \left( N + 2E \right) \times \left( 2N \right) }
+\, ,
+$$ (C-step-1)
 
-where
-$\boldsymbol{I}_{N}$ denotes an $N \times N$ identity matrix
+with
+$\boldsymbol{I}_{N}$ being an $N \times N$ identity matrix
 and
-$\boldsymbol{0}_{a, b}$ denotes an $a \times b$ matrix of zeros,
+$\boldsymbol{0}_{a, b}$ denoting an $a \times b$ matrix of zeros,
 and then permuting the last $2E$ rows by "interweaving"
 the $\left( N + 1 \right)$-th through the $\left( N + E \right)$-th rows
 and
@@ -111,16 +133,36 @@ $$
     \boldsymbol{C}_{N + E, \, :}        \, \\
     \boldsymbol{C}_{N + 2E, \, :}       \, \\
 \end{matrix} \right]
-$$ (Cg-step-2)
+\, .
+$$ (C-step-2)
 
-We use `C` as the dedicated variable name for $\boldsymbol{C}$.
+The *reduced augmented branch-to-bus incidence matrix* $\boldsymbol{W}$ is a submatrix of $\boldsymbol{C}$
+formed by removing from the latter the $\left( N + 1 \right)$-th through $\left( N + N_{ \mathsf{s} } \right)$-th columns:
+
+$$
+\boldsymbol{W}
+=
+\left[ \begin{matrix}
+    \boldsymbol{C}_{ : ,\, 1:N }
+    &
+    \boldsymbol{C}_{ : ,\, N + N_{ \mathsf{s} } + 1 : }
+    \, \\
+\end{matrix} \right]
+\in \mathbb{R}^{ \left( N + 2E \right) \times \left( 2N - N_{ \mathsf{s} } \right) }
+\, .
+$$
+
+In code, we use `C` and `W` for $\boldsymbol{C}$ and for $\boldsymbol{W}$, respectively.
+
+<!-- 
 Formally,
 {ref}`the sigma transform of the canonicalized state vector <prelim:state-vars:y-u>`
 $\boldsymbol{u}$
 is related to
-{ref}`the intermediate state vector <prelim:state-vars:x>`
+{ref}`the full intermediate state vector <prelim:state-vars:interm>`
 $\boldsymbol{x}$
 as
 $\boldsymbol{u} = \boldsymbol{C} \boldsymbol{x}$.
 This linear relation is the second component of
 {ref}`the factored formulation of the power flow equations <prelim:pow-flow-eqns:balance>`.
+-->

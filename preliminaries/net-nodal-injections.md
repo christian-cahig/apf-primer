@@ -124,7 +124,7 @@ $$
 =
 \operatorname{ diag } \! \left( \mathbf{v} \right)
 \operatorname{ conj } \! \left( \mathbf{Y} \mathbf{v} \right)
-\,
+\, ,
 $$ (vbus-2-pq)
 
 where
