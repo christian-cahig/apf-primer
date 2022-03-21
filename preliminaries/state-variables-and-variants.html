@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.5. State variables and variants</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.6. Control variables and load profile" href="control-variables-and-load-profile.html" />
+    <link rel="prev" title="1.4. System parameter matrices" href="system-parameter-matrices.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landing.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="main.html">
+   1. Preliminaries
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="bus-types-and-scalars.html">
+     1.1. Bus types and scalars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bus-indexing.html">
+     1.2. Bus indexing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="connection-matrices.html">
+     1.3. Connection matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="system-parameter-matrices.html">
+     1.4. System parameter matrices
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.5. State variables and variants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="control-variables-and-load-profile.html">
+     1.6. Control variables and load profile
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="net-nodal-injections.html">
+     1.7. Net nodal injections
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-flow-equations.html">
+     1.8. Power flow equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="some-jacobians.html">
+     1.9. Some Jacobians
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="problem-data.html">
+     1.10. Problem data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../apf-procedure/main.html">
+   2. The APF Procedure
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../apf-procedure/anticipate-injs.html">
+     2.1. Anticipating generator injections
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../apf-procedure/solve-bus-voltages.html">
+     2.2. Solving for the bus voltages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../apf-procedure/refine-slack-injs.html">
+     2.3. Refining slack-bus generator injections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../remarks/main.html">
+   3. Remarks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <i>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></i>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/preliminaries/state-variables-and-variants.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/christian-cahig/apf-primer"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/christian-cahig/apf-primer/issues/new?title=Issue%20on%20page%20%2Fpreliminaries/state-variables-and-variants.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-state-variables">
+   1.5.1. System state variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#auxiliary-state-variables">
+   1.5.2. Auxiliary state variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intermediate-state-variables">
+   1.5.3. Intermediate state variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#canonicalized-state-vector-and-its-sigma-transform">
+   1.5.4. Canonicalized state vector and its sigma transform
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>State variables and variants</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-state-variables">
+   1.5.1. System state variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#auxiliary-state-variables">
+   1.5.2. Auxiliary state variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intermediate-state-variables">
+   1.5.3. Intermediate state variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#canonicalized-state-vector-and-its-sigma-transform">
+   1.5.4. Canonicalized state vector and its sigma transform
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="state-variables-and-variants">
+<span id="prelim-state-vars"></span><h1><span class="section-number">1.5. </span>State variables and variants<a class="headerlink" href="#state-variables-and-variants" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="system-state-variables">
+<span id="prelim-state-vars-vm-va"></span><h2><span class="section-number">1.5.1. </span>System state variables<a class="headerlink" href="#system-state-variables" title="Permalink to this headline">¶</a></h2>
+<p>We use <em>system state variables</em> to collectively refer to two <span class="math notranslate nohighlight">\(N\)</span>-vectors:
+the vector of bus voltage magnitudes,
+<span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>,
+and
+the vector of their corresponding phase angles,
+<span class="math notranslate nohighlight">\(\boldsymbol{\delta}\)</span>.
+The <em>full state vector</em>
+<span class="math notranslate nohighlight">\(\boldsymbol{s}\)</span>
+is the concatenation of <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\delta}\)</span>,
+that is,</p>
+<div class="math notranslate nohighlight" id="equation-s">
+<span class="eqno">(1.8)<a class="headerlink" href="#equation-s" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\boldsymbol{s}
+=
+\left[ \begin{matrix}
+    \boldsymbol{v}      \, \\
+    \boldsymbol{\delta} \, \\
+\end{matrix} \right]
+\in \mathbb{R}^{2N} \, .
+\end{split}\]</div>
+<p>We reserve the variable names <code class="docutils literal notranslate"><span class="pre">vm</span></code> and <code class="docutils literal notranslate"><span class="pre">va</span></code>
+for <span class="math notranslate nohighlight">\(\boldsymbol{v}\)</span>
+and for <span class="math notranslate nohighlight">\(\boldsymbol{\delta}\)</span>,
+respectively.
+In code, we use <code class="docutils literal notranslate"><span class="pre">s</span></code> to indicate either
+<span class="math notranslate nohighlight">\(\boldsymbol{s}\)</span>
+or the tuple
+<span class="math notranslate nohighlight">\(\left( \boldsymbol{v}, \boldsymbol{\delta} \right)\)</span>.</p>
+</div>
+<div class="section" id="auxiliary-state-variables">
+<span id="prelim-state-vars-aux"></span><h2><span class="section-number">1.5.2. </span>Auxiliary state variables<a class="headerlink" href="#auxiliary-state-variables" title="Permalink to this headline">¶</a></h2>
+<p>Let
+<span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span>
+be the <span class="math notranslate nohighlight">\(N\)</span>-vector of squared voltage magnitudes,
+<em>i.e.</em>,</p>
+<div class="math notranslate nohighlight" id="equation-a">
+<span class="eqno">(1.9)<a class="headerlink" href="#equation-a" title="Permalink to this equation">¶</a></span>\[
+\boldsymbol{a}
+=
+\operatorname{diag} \! \left( \boldsymbol{v} \right) \boldsymbol{v}
+\, .
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\mathsf{f}\)</span> and <span class="math notranslate nohighlight">\(\mathsf{t}\)</span> be used as subscripts
+to denote quantities at the from- and at the to-side buses, respectively, of the branches.
+Then we have the <span class="math notranslate nohighlight">\(E\)</span>-vectors
+<span class="math notranslate nohighlight">\(\boldsymbol{v}_{ \mathsf{f} } = \boldsymbol{C}_{ \mathsf{f} } \, \boldsymbol{v}\)</span>
+and
+<span class="math notranslate nohighlight">\(\boldsymbol{\delta}_{ \mathsf{f} } = \boldsymbol{C}_{ \mathsf{f} } \, \boldsymbol{\delta}\)</span>
+for the sending,
+and
+<span class="math notranslate nohighlight">\(\boldsymbol{v}_{ \mathsf{t} } = \boldsymbol{C}_{ \mathsf{t} } \, \boldsymbol{v}\)</span>
+and
+<span class="math notranslate nohighlight">\(\boldsymbol{\delta}_{ \mathsf{t} } = \boldsymbol{C}_{ \mathsf{t} } \, \boldsymbol{\delta}\)</span>
+for the receiving ends.
+We can then define the <span class="math notranslate nohighlight">\(E\)</span>-vectors
+<span class="math notranslate nohighlight">\(\boldsymbol{k}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{r}\)</span>
+as</p>
+<div class="math notranslate nohighlight" id="equation-k">
+<span class="eqno">(1.10)<a class="headerlink" href="#equation-k" title="Permalink to this equation">¶</a></span>\[
+\boldsymbol{k}
+=
+\operatorname{diag} \! \left( \boldsymbol{v}_{ \mathsf{f} } \right)
+\operatorname{diag} \! \left( \boldsymbol{v}_{ \mathsf{t} } \right)
+\cos \! \left( \boldsymbol{\delta}_{ \mathsf{f} } - \boldsymbol{\delta}_{ \mathsf{t} } \right)
+\, ,
+\]</div>
+<div class="math notranslate nohighlight" id="equation-r">
+<span class="eqno">(1.11)<a class="headerlink" href="#equation-r" title="Permalink to this equation">¶</a></span>\[
+\boldsymbol{r}
+=
+\operatorname{diag} \! \left( \boldsymbol{v}_{ \mathsf{f} } \right)
+\operatorname{diag} \! \left( \boldsymbol{v}_{ \mathsf{t} } \right)
+\sin \! \left( \boldsymbol{\delta}_{ \mathsf{f} } - \boldsymbol{\delta}_{ \mathsf{t} } \right)
+\, .
+\]</div>
+<p>We use <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">k</span></code>, and <code class="docutils literal notranslate"><span class="pre">r</span></code>
+as the respective variable names for
+<span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{k}\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{r}\)</span>.</p>
+<p>Let
+<span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>
+be the <span class="math notranslate nohighlight">\(N\)</span>-vector of the natural logarithms of the squared voltage magnitudes, <em>i.e.</em>,</p>
+<div class="math notranslate nohighlight" id="equation-alp">
+<span class="eqno">(1.12)<a class="headerlink" href="#equation-alp" title="Permalink to this equation">¶</a></span>\[
+\boldsymbol{\alpha}
+=
+\ln \! \left( \operatorname{diag} \! \left( \boldsymbol{v} \right) \, \boldsymbol{v} \right)
+=
+\ln \! \left( \boldsymbol{a} \right)
+=
+2 \ln \! \left( \boldsymbol{v} \right)
+\, .
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\ln \! \left( \cdot \right)\)</span> applies componentwise.
+As with <span class="math notranslate nohighlight">\(\boldsymbol{v}_{ \mathsf{f} }\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{v}_{ \mathsf{t} }\)</span>,
+we have the <span class="math notranslate nohighlight">\(E\)</span>-vectors
+<span class="math notranslate nohighlight">\(\boldsymbol{\alpha}_{ \mathsf{f} } = \boldsymbol{C}_{ \mathsf{f} } \, \boldsymbol{\alpha}\)</span>
+and
+<span class="math notranslate nohighlight">\(\boldsymbol{\alpha}_{ \mathsf{t} } = \boldsymbol{C}_{ \mathsf{t} } \, \boldsymbol{\alpha}\)</span>.
+We can then define the <span class="math notranslate nohighlight">\(E\)</span>-vectors
+<span class="math notranslate nohighlight">\(\boldsymbol{\kappa}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\rho}\)</span>
+as</p>
+<div class="math notranslate nohighlight" id="equation-kap">
+<span class="eqno">(1.13)<a class="headerlink" href="#equation-kap" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\boldsymbol{\kappa}
+=
+\boldsymbol{\alpha}_{ \mathsf{f} } + \boldsymbol{\alpha}_{ \mathsf{t} }
+\, , \\
+\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-rho">
+<span class="eqno">(1.14)<a class="headerlink" href="#equation-rho" title="Permalink to this equation">¶</a></span>\[
+\boldsymbol{\rho}
+=
+\boldsymbol{\delta}_{ \mathsf{f} } - \boldsymbol{\delta}_{ \mathsf{t} }
+\, .
+\]</div>
+<p>We use <code class="docutils literal notranslate"><span class="pre">alp</span></code>, <code class="docutils literal notranslate"><span class="pre">kap</span></code>, and <code class="docutils literal notranslate"><span class="pre">rho</span></code>
+as the respective variable names for
+<span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{\kappa}\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{\rho}\)</span>.</p>
+</div>
+<div class="section" id="intermediate-state-variables">
+<span id="prelim-state-vars-interm"></span><h2><span class="section-number">1.5.3. </span>Intermediate state variables<a class="headerlink" href="#intermediate-state-variables" title="Permalink to this headline">¶</a></h2>
+<p>We define the <em>full intermediate state vector</em> as the concatenation of <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\delta}\)</span> , <em>i.e.</em>,</p>
+<div class="math notranslate nohighlight" id="equation-x">
+<span class="eqno">(1.15)<a class="headerlink" href="#equation-x" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\boldsymbol{x}
+=
+\left[ \begin{matrix}
+    \boldsymbol{\alpha} \\
+    \boldsymbol{\delta}
+\end{matrix} \right]
+\in \mathbb{R}^{ 2N }
+\, .
+\end{split}\]</div>
+<p>The <em>reduced intermediate state vector</em> is similarly constructed, except that only the phase angles at the non-reference buses are used, <em>i.e.</em>,</p>
+<div class="math notranslate nohighlight" id="equation-w">
+<span class="eqno">(1.16)<a class="headerlink" href="#equation-w" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\boldsymbol{w}
+=
+\left[ \begin{matrix}
+    \boldsymbol{\alpha} \, \\
+    \boldsymbol{\delta}_{ \mathsf{v} } \, \\
+    \boldsymbol{\delta}_{ \mathsf{q} } \, \\
+\end{matrix} \right]
+\in \mathbb{R}^{ 2N - N_{ \mathsf{s} } }
+\, ,
+\end{split}\]</div>
+<p>following <a class="reference internal" href="bus-indexing.html#prelim-bus-indexing-vecs-n"><span class="std std-ref">the partitioning scheme</span></a> for <span class="math notranslate nohighlight">\(N\)</span>-vectors.
+In code, we use <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">w</span></code> exclusively to refer to <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> and to <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span>, respectively.</p>
+</div>
+<div class="section" id="canonicalized-state-vector-and-its-sigma-transform">
+<span id="prelim-state-vars-y-u"></span><h2><span class="section-number">1.5.4. </span>Canonicalized state vector and its sigma transform<a class="headerlink" href="#canonicalized-state-vector-and-its-sigma-transform" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The term “canonicalized” is based on “canonical forms” in
+<a class="reference external" href="https://doi.org/10.1098/rspa.2014.0236"><em>Factored solution of nonlinear equation systems</em></a>.</p>
+</div>
+<p>The <em>canonicalized state vector</em>
+<span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>
+is the concatenation of <span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span>
+and the “interweaving” of <span class="math notranslate nohighlight">\(\boldsymbol{k}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{r}\)</span>,
+<em>i.e.</em>,</p>
+<div class="math notranslate nohighlight" id="equation-y">
+<span class="eqno">(1.17)<a class="headerlink" href="#equation-y" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\boldsymbol{y}
+=
+\left[ \begin{matrix}
+    \boldsymbol{a}  \, \\
+    k_{1}           \, \\
+    r_{1}           \, \\
+    k_{2}           \, \\
+    r_{2}           \, \\
+    \vdots          \, \\
+    k_{E - 1}       \, \\
+    r_{E - 1}       \, \\
+    k_{E}           \, \\
+    r_{E}           \, \\
+\end{matrix} \right]
+\in \mathbb{R}^{ N + 2E }
+\, ,
+\end{split}\]</div>
+<p>with <code class="docutils literal notranslate"><span class="pre">y</span></code> as the exclusive variable name.</p>
+<p>We define
+<span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span>
+as the concatenation of <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>
+and the “interweaving” of <span class="math notranslate nohighlight">\(\boldsymbol{\kappa}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\rho}\)</span>,
+<em>i.e.</em>,</p>
+<div class="math notranslate nohighlight" id="equation-u">
+<span class="eqno">(1.18)<a class="headerlink" href="#equation-u" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\boldsymbol{u}
+=
+\left[ \begin{matrix}
+    \boldsymbol{\alpha} \, \\
+    \kappa_{1}          \, \\
+    \rho_{1}            \, \\
+    \kappa_{2}          \, \\
+    \rho_{2}            \, \\
+    \vdots              \, \\
+    \kappa_{E - 1}      \, \\
+    \rho_{E - 1}        \, \\
+    \kappa_{E}          \, \\
+    \rho_{E}            \, \\
+\end{matrix} \right]
+\in \mathbb{R}^{ N + 2E }
+\, ,
+\end{split}\]</div>
+<p>with <code class="docutils literal notranslate"><span class="pre">u</span></code> as the reserved variable name.</p>
+<p>We refer to <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> as
+<em>the sigma transform of <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span></em>;
+in symbols,
+<span class="math notranslate nohighlight">\(\boldsymbol{u} = \operatorname{sigma} \! \left( \boldsymbol{y} \right) \)</span>.
+This transform can be described as an operator that maps
+<span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{k}\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{r}\)</span>
+to
+<span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{\kappa}\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{\rho}\)</span>.
+It is eaasy to show that the following maps are invoked by
+<span class="math notranslate nohighlight">\(\operatorname{sigma} \! \left( \boldsymbol{y} \right)\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-sigma-map">
+<span class="eqno">(1.19)<a class="headerlink" href="#equation-sigma-map" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\begin{matrix}
+    \boldsymbol{a} \mapsto \boldsymbol{\alpha}
+    &amp; : &amp;
+    \ln \! \left( \boldsymbol{a} \right)
+    \, , \\
+    \boldsymbol{k} \mapsto \boldsymbol{\kappa}
+    &amp; : &amp;
+    \ln \! \left(
+        \operatorname{diag} \! \left( \boldsymbol{k} \right) \, \boldsymbol{k}
+        +
+        \operatorname{diag} \! \left( \boldsymbol{r} \right) \, \boldsymbol{r}
+    \right)
+    \, , \\
+    \boldsymbol{r} \mapsto \boldsymbol{\rho}
+    &amp; : &amp;
+    \operatorname{arctan} \! \left(
+        \operatorname{diag}^{-1} \! \left( \boldsymbol{k} \right) \, \boldsymbol{r}
+    \right)
+    \, , \\
+\end{matrix}
+\end{split}\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(\operatorname{arctan} \! \left( \cdot \right)\)</span>
+applies componentwise,
+and
+<span class="math notranslate nohighlight">\(\operatorname{diag}^{-1} \! \left( \cdot \right)\)</span>
+denotes the matrix inverse of
+<span class="math notranslate nohighlight">\(\operatorname{diag} \! \left( \cdot \right)\)</span>.
+Since the sigma transform can be thought of as a function
+that takes <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span> as input,
+it is implemented in code as a function with the call signature <code class="docutils literal notranslate"><span class="pre">sigma(y)</span></code>.</p>
+<p>Moreover, we can say that <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span> is computable from <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> by taking the
+<em>inverse sigma transform</em> of <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span>;
+in symbols,
+<span class="math notranslate nohighlight">\(\boldsymbol{y} = \operatorname{arcsigma} \! \left( \boldsymbol{u} \right)\)</span>.
+This transform can be described as an operator mapping
+<span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{\kappa}\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{\rho}\)</span>
+to
+<span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{k}\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{r}\)</span>.
+The following maps are invoked by
+<span class="math notranslate nohighlight">\(\operatorname{arcsigma} \! \left( \boldsymbol{u} \right)\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-arcsigma-map">
+<span class="eqno">(1.20)<a class="headerlink" href="#equation-arcsigma-map" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\begin{matrix}
+    \boldsymbol{\alpha} \mapsto \boldsymbol{a}
+    &amp; : &amp;
+    \exp \! \left( \boldsymbol{\alpha} \right)
+    \, , \\
+    \boldsymbol{\kappa} \mapsto \boldsymbol{k}
+    &amp; : &amp;
+    \operatorname{sqrt} \! \left( \exp \! \left( \boldsymbol{\kappa} \right) \right)
+    \cos \! \left( \boldsymbol{\rho} \right)
+    \, , \\
+    \boldsymbol{\rho} \mapsto \boldsymbol{r}
+    &amp; : &amp;
+    \operatorname{sqrt} \! \left( \exp \! \left( \boldsymbol{\kappa} \right) \right)
+    \sin \! \left( \boldsymbol{\rho} \right)
+    \, , \\
+\end{matrix}
+\end{split}\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(\exp \! \left( \cdot \right)\)</span>
+and
+<span class="math notranslate nohighlight">\(\operatorname{sqrt} \! \left( \cdot \right)\)</span>
+indicate exponentiating and taking the square-root componentwise, respectively.
+Since the inverse sigma transform can be thought of as a function
+that takes <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> as input,
+it is implemented in code as a function with the call signature <code class="docutils literal notranslate"><span class="pre">arcsigma(y)</span></code>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./preliminaries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="system-parameter-matrices.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1.4. </span>System parameter matrices</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="control-variables-and-load-profile.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.6. </span>Control variables and load profile</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Christian Cahig<br/>
+    
+      <div class="extra_footer">
+        <i>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></i>.
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

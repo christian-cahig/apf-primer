@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.3. Connection matrices</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.4. System parameter matrices" href="system-parameter-matrices.html" />
+    <link rel="prev" title="1.2. Bus indexing" href="bus-indexing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landing.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="main.html">
+   1. Preliminaries
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="bus-types-and-scalars.html">
+     1.1. Bus types and scalars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bus-indexing.html">
+     1.2. Bus indexing
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.3. Connection matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="system-parameter-matrices.html">
+     1.4. System parameter matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state-variables-and-variants.html">
+     1.5. State variables and variants
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="control-variables-and-load-profile.html">
+     1.6. Control variables and load profile
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="net-nodal-injections.html">
+     1.7. Net nodal injections
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-flow-equations.html">
+     1.8. Power flow equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="some-jacobians.html">
+     1.9. Some Jacobians
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="problem-data.html">
+     1.10. Problem data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../apf-procedure/main.html">
+   2. The APF Procedure
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../apf-procedure/anticipate-injs.html">
+     2.1. Anticipating generator injections
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../apf-procedure/solve-bus-voltages.html">
+     2.2. Solving for the bus voltages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../apf-procedure/refine-slack-injs.html">
+     2.3. Refining slack-bus generator injections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../remarks/main.html">
+   3. Remarks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <i>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></i>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/preliminaries/connection-matrices.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/christian-cahig/apf-primer"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/christian-cahig/apf-primer/issues/new?title=Issue%20on%20page%20%2Fpreliminaries/connection-matrices.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#branch-connection-matrices">
+   1.3.1. Branch connection matrices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generator-connection-matrix">
+   1.3.2. Generator connection matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-connection-matrix">
+   1.3.3. Load connection matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#branch-to-bus-incidence-matrices">
+   1.3.4. Branch-to-bus incidence matrices
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Connection matrices</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#branch-connection-matrices">
+   1.3.1. Branch connection matrices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generator-connection-matrix">
+   1.3.2. Generator connection matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-connection-matrix">
+   1.3.3. Load connection matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#branch-to-bus-incidence-matrices">
+   1.3.4. Branch-to-bus incidence matrices
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="connection-matrices">
+<span id="prelim-connection-mats"></span><h1><span class="section-number">1.3. </span>Connection matrices<a class="headerlink" href="#connection-matrices" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="branch-connection-matrices">
+<span id="prelim-connection-mats-cf-ct"></span><h2><span class="section-number">1.3.1. </span>Branch connection matrices<a class="headerlink" href="#branch-connection-matrices" title="Permalink to this headline">¶</a></h2>
+<p>Connectivity of branches are encoded by
+the <em>from-</em> and the <em>to-side branch connection matrices</em>
+<span class="math notranslate nohighlight">\(\boldsymbol{C}_{ \mathsf{f} }\)</span>
+and
+<span class="math notranslate nohighlight">\(\boldsymbol{C}_{ \mathsf{t} }\)</span>.
+These are sparse <span class="math notranslate nohighlight">\(E \times N\)</span> matrices constructed such that
+<span class="math notranslate nohighlight">\(\left[ \begin{matrix} \boldsymbol{C}_{ \mathsf{f} } \end{matrix} \right]_{i,j} = 1\)</span>
+and
+<span class="math notranslate nohighlight">\(\left[ \begin{matrix} \boldsymbol{C}_{ \mathsf{t} } \end{matrix} \right]_{i,j} = 1\)</span>
+if the <span class="math notranslate nohighlight">\(i\)</span>-th branch (in a consistent roster) has
+its ‘from’ (sending) end at the <span class="math notranslate nohighlight">\(j\)</span>-th bus
+and its ‘to’ (receiving) end at the <span class="math notranslate nohighlight">\(k\)</span>-th bus<a class="footnote-reference brackets" href="#about-cf-ct" id="id1">1</a>.
+The variable names <code class="docutils literal notranslate"><span class="pre">Cf</span></code> and <code class="docutils literal notranslate"><span class="pre">Ct</span></code> are reserved for
+<span class="math notranslate nohighlight">\(\boldsymbol{C}_{ \mathsf{f} }\)</span>
+and
+<span class="math notranslate nohighlight">\(\boldsymbol{C}_{ \mathsf{t} }\)</span>,
+respectively.</p>
+</div>
+<div class="section" id="generator-connection-matrix">
+<span id="prelim-connection-mats-cg"></span><h2><span class="section-number">1.3.2. </span>Generator connection matrix<a class="headerlink" href="#generator-connection-matrix" title="Permalink to this headline">¶</a></h2>
+<p>The <em>generator connection matrix</em>
+<span class="math notranslate nohighlight">\(\boldsymbol{C}_{ \mathsf{g} }\)</span>
+encodes which generator units are connected to which buses.
+With consistent rosters of <span class="math notranslate nohighlight">\(G\)</span> generator units and of <span class="math notranslate nohighlight">\(N\)</span> buses
+(indexed according to <a class="reference internal" href="bus-indexing.html"><span class="doc">Bus indexing</span></a>),
+<span class="math notranslate nohighlight">\(\boldsymbol{C}_{ \mathsf{g}}\)</span> is a sparse <span class="math notranslate nohighlight">\(N \times G\)</span> matrix where
+(using bracket indexing)
+<span class="math notranslate nohighlight">\(\left[ \begin{matrix} \boldsymbol{C}_{ \mathsf{g}} \\ \end{matrix} \right]_{i, j} =  1\)</span>
+if generator <span class="math notranslate nohighlight">\(j\)</span> is at bus <span class="math notranslate nohighlight">\(i\)</span>,
+and
+<span class="math notranslate nohighlight">\(\left[ \begin{matrix} \boldsymbol{C}_{ \mathsf{g}} \\ \end{matrix} \right]_{i, j} =  0\)</span>
+otherwise<a class="footnote-reference brackets" href="#about-cg" id="id2">2</a>.
+The variable name <code class="docutils literal notranslate"><span class="pre">Cg</span></code> is reserved for <span class="math notranslate nohighlight">\(\boldsymbol{C}_{ \mathsf{g}} \)</span>.</p>
+</div>
+<div class="section" id="load-connection-matrix">
+<span id="prelim-connection-mats-cd"></span><h2><span class="section-number">1.3.3. </span>Load connection matrix<a class="headerlink" href="#load-connection-matrix" title="Permalink to this headline">¶</a></h2>
+<p>The <em>load connection matrix</em>
+<span class="math notranslate nohighlight">\(\boldsymbol{C}_{\mathsf{d} }\)</span>
+tells us which load units are connected to which buses.
+With consistent rosters of <span class="math notranslate nohighlight">\(D\)</span> load units and of <span class="math notranslate nohighlight">\(N\)</span> buses,
+it is a sparse <span class="math notranslate nohighlight">\(N \times D\)</span> matrix where
+<span class="math notranslate nohighlight">\(\left[ \begin{matrix} \boldsymbol{C}_{\mathsf{d} } \\ \end{matrix} \right]_{i, j} = 1\)</span>
+if load <span class="math notranslate nohighlight">\(j\)</span> is at bus <span class="math notranslate nohighlight">\(i\)</span>,
+and
+<span class="math notranslate nohighlight">\(\left[ \begin{matrix} \boldsymbol{C}_{\mathsf{d} } \\ \end{matrix} \right]_{i, j} = 0\)</span>
+otherwise.
+The variable name <code class="docutils literal notranslate"><span class="pre">Cd</span></code> is reserved for <span class="math notranslate nohighlight">\(\boldsymbol{C}_{\mathsf{d} }\)</span>.</p>
+</div>
+<div class="section" id="branch-to-bus-incidence-matrices">
+<span id="prelim-connection-mats-cw"></span><h2><span class="section-number">1.3.4. </span>Branch-to-bus incidence matrices<a class="headerlink" href="#branch-to-bus-incidence-matrices" title="Permalink to this headline">¶</a></h2>
+<p>Let
+<span class="math notranslate nohighlight">\( \boldsymbol{C}_{ \mathsf{ft} }^{ + } \)</span>
+and
+<span class="math notranslate nohighlight">\( \boldsymbol{C}_{ \mathsf{ft} }^{ - } \)</span>
+be the <em>undirected</em> and the <em>directed branch-to-bus incidence matrices</em>
+given by</p>
+<div class="math notranslate nohighlight" id="equation-cft-plus">
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-cft-plus" title="Permalink to this equation">¶</a></span>\[
+\boldsymbol{C}_{ \mathsf{ft} }^{ + }
+=
+\boldsymbol{C}_{ \mathsf{f} } + \boldsymbol{C}_{ \mathsf{t} }
+\in \mathbb{R}^{ E \times N }
+\, ,
+\]</div>
+<div class="math notranslate nohighlight" id="equation-cft-minus">
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-cft-minus" title="Permalink to this equation">¶</a></span>\[
+\boldsymbol{C}_{ \mathsf{ft} }^{ - }
+=
+\boldsymbol{C}_{ \mathsf{f} } - \boldsymbol{C}_{ \mathsf{t} }
+\in \mathbb{R}^{ E \times N }
+\, ,
+\]</div>
+<p>respectively.
+The <em>full augmented branch-to-bus incidence matrix</em> <span class="math notranslate nohighlight">\(\boldsymbol{C}\)</span> is obtained by first setting it to be</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Equation <a class="reference internal" href="#equation-c-step-1">(1.3)</a> is an extension of Equation (45) of
+<a class="reference external" href="https://doi.org/10.1109/TPWRS.2011.2162256"><em>Bilinear Power System State Estimation</em></a>.</p>
+</div>
+<div class="math notranslate nohighlight" id="equation-c-step-1">
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-c-step-1" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\boldsymbol{C}
+\, \gets
+\left[ \begin{matrix}
+    \boldsymbol{I}_{ N }                    &amp;   \boldsymbol{0}_{ N ,\, N }
+    \\
+    \boldsymbol{C}_{ \mathsf{ft} }^{ + }    &amp;   \boldsymbol{0}_{ E ,\, N }
+    \\
+    \boldsymbol{0}_{ E ,\, N }              &amp;   \boldsymbol{C}_{ \mathsf{ft} }^{ - }
+    \\
+\end{matrix} \right]
+\in \mathbb{R}^{ \left( N + 2E \right) \times \left( 2N \right) }
+\, ,
+\end{split}\]</div>
+<p>with
+<span class="math notranslate nohighlight">\(\boldsymbol{I}_{N}\)</span> being an <span class="math notranslate nohighlight">\(N \times N\)</span> identity matrix
+and
+<span class="math notranslate nohighlight">\(\boldsymbol{0}_{a, b}\)</span> denoting an <span class="math notranslate nohighlight">\(a \times b\)</span> matrix of zeros,
+and then permuting the last <span class="math notranslate nohighlight">\(2E\)</span> rows by “interweaving”
+the <span class="math notranslate nohighlight">\(\left( N + 1 \right)\)</span>-th through the <span class="math notranslate nohighlight">\(\left( N + E \right)\)</span>-th rows
+and
+the <span class="math notranslate nohighlight">\(\left( N + E + 1 \right)\)</span>-th through the <span class="math notranslate nohighlight">\(\left( N + 2E \right)\)</span>-th:</p>
+<div class="math notranslate nohighlight" id="equation-c-step-2">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-c-step-2" title="Permalink to this equation">¶</a></span>\[\begin{split}
+\boldsymbol{C}
+\, \gets
+\left[ \begin{matrix}
+    \boldsymbol{C}_{1 : N, \, :}        \, \\
+    \boldsymbol{C}_{N + 1, \, :}        \, \\
+    \boldsymbol{C}_{N + E + 1, \, :}    \, \\
+    \boldsymbol{C}_{N + 2, \, :}        \, \\
+    \boldsymbol{C}_{N + E + 2, \, :}    \, \\
+    \vdots                              \, \\
+    \boldsymbol{C}_{N + E - 1, \, :}    \, \\
+    \boldsymbol{C}_{N + 2E - 1, \, :}   \, \\
+    \boldsymbol{C}_{N + E, \, :}        \, \\
+    \boldsymbol{C}_{N + 2E, \, :}       \, \\
+\end{matrix} \right]
+\, .
+\end{split}\]</div>
+<p>The <em>reduced augmented branch-to-bus incidence matrix</em> <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> is a submatrix of <span class="math notranslate nohighlight">\(\boldsymbol{C}\)</span>
+formed by removing from the latter the <span class="math notranslate nohighlight">\(\left( N + 1 \right)\)</span>-th through <span class="math notranslate nohighlight">\(\left( N + N_{ \mathsf{s} } \right)\)</span>-th columns:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{W}
+=
+\left[ \begin{matrix}
+    \boldsymbol{C}_{ : ,\, 1:N }
+    &amp;
+    \boldsymbol{C}_{ : ,\, N + N_{ \mathsf{s} } + 1 : }
+    \, \\
+\end{matrix} \right]
+\in \mathbb{R}^{ \left( N + 2E \right) \times \left( 2N - N_{ \mathsf{s} } \right) }
+\, .
+\end{split}\]</div>
+<p>In code, we use <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">W</span></code> for <span class="math notranslate nohighlight">\(\boldsymbol{C}\)</span> and for <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span>, respectively.</p>
+<!-- 
+Formally,
+{ref}`the sigma transform of the canonicalized state vector <prelim:state-vars:y-u>`
+$\boldsymbol{u}$
+is related to
+{ref}`the full intermediate state vector <prelim:state-vars:interm>`
+$\boldsymbol{x}$
+as
+$\boldsymbol{u} = \boldsymbol{C} \boldsymbol{x}$.
+This linear relation is the second component of
+{ref}`the factored formulation of the power flow equations <prelim:pow-flow-eqns:balance>`.
+-->
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="about-cf-ct"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Aside from notation, this is the same formulation used in Section 3.2 of
+<a class="reference external" href="https://matpower.org/docs/MATPOWER-manual-7.1.pdf"><em>MATPOWER User’s Manual version 7.1</em></a>.</p>
+</dd>
+<dt class="label" id="about-cg"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Aside from notation, this is the same formulation used in Section 3.3 of
+<a class="reference external" href="https://matpower.org/docs/MATPOWER-manual-7.1.pdf"><em>MATPOWER User’s Manual version 7.1</em></a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./preliminaries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="bus-indexing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1.2. </span>Bus indexing</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="system-parameter-matrices.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.4. </span>System parameter matrices</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Christian Cahig<br/>
+    
+      <div class="extra_footer">
+        <i>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></i>.
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
