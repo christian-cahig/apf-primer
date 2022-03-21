@@ -1,4 +1,4 @@
-name: apf-docs
+name: apf-primer
 channels:
   - conda-forge
   - defaults
