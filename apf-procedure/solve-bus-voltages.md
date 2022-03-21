@@ -2,8 +2,8 @@
 # Solving for the bus voltages
 
 At this stage, we have
-the expected load draws $\boldsymbol{p}_{ \mathsf{d} } + j \boldsymbol{p}_{ \mathsf{d} }$
-and the anticipated generator injections $\boldsymbol{p}_{ \mathsf{g} } + j \boldsymbol{p}_{ \mathsf{g} }$.
+the expected load draws $\boldsymbol{p}_{ \mathsf{d} } + j \boldsymbol{q}_{ \mathsf{d} }$
+and the anticipated generator injections $\boldsymbol{p}_{ \mathsf{g} } + j \boldsymbol{q}_{ \mathsf{g} }$.
 Forming the "factored" power flow equations {eq}`pf-eqns-fac` for the non-slack buses,
 *i.e.*,
 
